@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,9 @@ export class LoginComponent {
   constructor(
     private service: AuthService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private location: LocationStrategy
+
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -38,9 +41,10 @@ export class LoginComponent {
         alert(response.jwtToken);
         const jwtToken = response.jwtToken;
         localStorage.setItem('JWT', jwtToken);
-        this.router.navigateByUrl('/signup');
+       this.router.navigate(['/login']);
       }
-    })
+    });
   }
+  
 
 }

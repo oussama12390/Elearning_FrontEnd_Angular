@@ -1,0 +1,89 @@
+/* Déclaration des variables CSS */
+:root {
+  --navbar-bg-color: #ffffff;
+  --navbar-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --nav-link-color: #555;
+  --nav-link-hover-color: #007bff;
+  --nav-link-active-color: #64666e;
+  --navbar-toggler-color: #555;
+  --input-border-radius: 0.25rem;
+  --input-border-color: #ccc;
+  --btn-bg-color: #007bff;
+  --btn-hover-bg-color: #0056b3;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: var(--navbar-bg-color);
+  box-shadow: var(--navbar-shadow);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-brand img {
+  max-height: 30px;
+}
+
+.navbar-nav .nav-link {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--nav-link-color);
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--nav-link-hover-color);
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--nav-link-active-color);
+}
+
+.navbar-toggler {
+  border: none;
+  color: var(--navbar-toggler-color);
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  color: var(--navbar-toggler-color);
+}
+
+.input-group .form-control {
+  border-radius: var(--input-border-radius) 0 0 var(--input-border-radius);
+  border-right: none;
+  box-shadow: none;
+}
+
+.input-group .btn {
+  border-radius: 0 var(--input-border-radius) var(--input-border-radius) 0;
+  background-color: var(--btn-bg-color);
+  transition: background-color 0.3s ease;
+}
+
+.input-group .btn:hover {
+  background-color: var(--btn-hover-bg-color);
+}
+
+.input-group .btn:focus {
+  box-shadow: none;
+}
+
+.nav-item .nav-link i {
+  margin-right: 5px;
+}
+
+/* Responsiveness */
+@media (max-width: 991.98px) {
+  .navbar {
+    background-color: #f8f9fa;
+  }
+
+  .navbar-collapse {
+    background-color: var(--navbar-bg-color);
+    box-shadow: var(--navbar-shadow);
+  }
+}
