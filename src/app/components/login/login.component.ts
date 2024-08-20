@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { AuthService } from '../../service/auth.service';
 import { LocationStrategy } from '@angular/common';
 
@@ -37,14 +38,16 @@ export class LoginComponent {
     console.log(this.loginForm.value);
     this.service.login(this.loginForm.value).subscribe((response) => {
       console.log(response);
-      if (response.jwtToken) {
-        alert(response.jwtToken);
-        const jwtToken = response.jwtToken;
-        localStorage.setItem('JWT', jwtToken);
-       this.router.navigate(['/login']);
-      }
-    });
-  }
-  
+     if (response && response.token) {  // Par exemple, si le token est sous la clé 'token'
+      const jwtToken = response.token;
+      localStorage.setItem('JWT', jwtToken);
+      this.router.navigate(['/home']);
+    } else {
+      alert('Échec de la connexion : jeton JWT manquant ou invalide.');
+    }
+    
+    });
+  }
+  
 
 }

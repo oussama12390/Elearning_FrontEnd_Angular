@@ -12,9 +12,11 @@ import { LogOutComponent } from './components/log-out/log-out.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 @NgModule({
-  declarations: [
+  declarations:[
     AppComponent,
     LoginComponent,
     RegisterComponent,
@@ -22,7 +24,9 @@ import { CategoriesComponent } from './components/categories/categories.componen
     LogOutComponent,
     CoursesComponent,
     ChatComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    ProfileComponent,
+    
   ],
   imports: [
     BrowserModule,

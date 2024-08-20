@@ -10,6 +10,7 @@ const BASE_URL = ['http://localhost:8080/']
   providedIn: 'root'
 })
 export class AuthService {
+  
 
   constructor(
     private http: HttpClient
@@ -35,4 +36,7 @@ export class AuthService {
     }
     return null;
   }
+
+
+ 
 }
