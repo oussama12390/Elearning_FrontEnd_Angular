@@ -13,6 +13,8 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthService } from './service/auth.service';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -37,7 +39,11 @@ import { ProfileComponent } from './components/profile/profile.component';
     RouterModule//  add
   
   ],
-  providers: [],
+  providers: [
+    AuthService, // Ajoutez vos services ici
+    JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS } // Ajoutez JwtHelperService comme fournisseur
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
