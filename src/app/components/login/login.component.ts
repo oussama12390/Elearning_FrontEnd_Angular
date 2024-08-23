@@ -51,23 +51,19 @@ export class LoginComponent {
 */
 login() {
   console.log(this.loginForm.value);
-  this.service.login(this.loginForm.value).subscribe(
-    (response) => {
-      console.log(response);
-      if (response && response.token) { // Vérification de l'existence du token
-        const jwtToken = response.token;
-        localStorage.setItem('JWT', jwtToken); // Stockage du token
-        this.router.navigate(['/home']); // Redirection vers la page d'accueil
-      } else {
-        alert('Échec de la connexion : jeton JWT manquant ou invalide.');
-      }
-    },
-    (error) => {
-      console.error('Erreur de connexion:', error);
-      alert('Échec de la connexion.');
-    }
-  );
-}
+  this.service.login(this.loginForm.value).subscribe((response) => {
+    console.log(response);
+   if (response && response.token) {  // Par exemple, si le token est sous la clé 'token'
+    const jwtToken = response.token;
+    localStorage.setItem('JWT', jwtToken);
+    this.router.navigate(['/home']);
+  } else {
+    alert('Échec de la connexion : jeton JWT manquant ou invalide.');
+  }
+  
+    });
+  }
+
 
   
 
