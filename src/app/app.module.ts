@@ -17,7 +17,8 @@ import { AuthService } from './service/auth.service';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { CommonModule } from '@angular/common';
 import { PageAdminComponent } from './components/page-admin/page-admin.component';
-import { PageUserComponent } from './components/page-user/page-user.component';  // Import CommonModule
+import { PageUserComponent } from './components/page-user/page-user.component';
+import { MeetComponent } from './components/meet/meet.component';  // Import CommonModule
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { PageUserComponent } from './components/page-user/page-user.component'; 
     ProfileComponent,
     PageAdminComponent,
     PageUserComponent,
+    MeetComponent,
     
   ],
   imports: [

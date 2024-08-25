@@ -12,6 +12,7 @@ import { PageAdminComponent } from './components/page-admin/page-admin.component
 import { PageUserComponent } from './components/page-user/page-user.component';
 import { AdminGuard } from './components/guardadmin/auth.guard';
 import { UserGuard } from './components/guarduser/auth.guard';
+import { MeetComponent } from './components/meet/meet.component';
 
 const routes: Routes = [
   /*{ path: 'register', component: RegisterComponent },
@@ -26,8 +27,12 @@ const routes: Routes = [
   { path: 'admin', component: PageAdminComponent },
   { path: 'user', component: PageUserComponent },
   { path: 'login', component: LoginComponent },
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
-  // { path: '**', redirectTo: '/home' } // Redirect to home for undefined routes
+   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  //{ path: '**', redirectTo: '/login' }, // Redirect to home for undefined routes
+  {path:'chat',component:ChatComponent},
+  {path:'courses',component:CoursesComponent},
+  {path:'categories',component:CategoriesComponent},
+  {path:'meet',component:MeetComponent},
 ];
 
 @NgModule({

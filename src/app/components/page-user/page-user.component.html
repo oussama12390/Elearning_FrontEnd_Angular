@@ -51,24 +51,19 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/chat">Chat</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Courses
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">READ</a></li>
-              <li><a class="dropdown-item" href="#">BUY</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+          
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/courses">Courses</a>
           </li>
+            
+         
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Meet</a>
           </li>
         </ul>
         
         <div class="d-flex align-items-center">
-          <span class="me-3">{{user.email}}</span>
+          <span class="me-3">{{user.name}}</span>
           <form class="d-flex align-items-center">
             <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button> -->
