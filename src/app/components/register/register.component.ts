@@ -17,7 +17,7 @@ export class RegisterComponent {
       address: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
+     
     });
   }
 
@@ -26,6 +26,7 @@ export class RegisterComponent {
       this.authService.register(this.registerForm.value).subscribe(
         (response) => {
           console.log('User registered successfully:', response);
+          
         },
         (error) => {
           console.error('Registration failed:', error);

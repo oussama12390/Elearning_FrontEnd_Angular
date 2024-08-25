@@ -1,4 +1,3 @@
-// src/app/components/home/home.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
@@ -18,6 +17,11 @@ export class HomeComponent implements OnInit {
       this.userService.getCurrentUser().subscribe(
         (data) => {
           this.user = data;
+          if (this.user.role === 'ADMIN') {
+            this.router.navigateByUrl('/admin'); // Redirect to admin page if role is admin
+          } else if (this.user.role === 'USER') {
+            this.router.navigateByUrl('/user'); // Redirect to home page if role is user
+          }
         },
         (error) => {
           console.error('Error fetching user details:', error);
@@ -25,9 +29,7 @@ export class HomeComponent implements OnInit {
         }
       );
     } else {
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/login'); // Redirect to login if not authenticated
     }
   }
-    
-
 }

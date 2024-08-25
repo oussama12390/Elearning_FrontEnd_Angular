@@ -10,14 +10,24 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { AuthGuard } from './components/guards/auth.guard';
 import { PageAdminComponent } from './components/page-admin/page-admin.component';
 import { PageUserComponent } from './components/page-user/page-user.component';
+import { AdminGuard } from './components/guardadmin/auth.guard';
+import { UserGuard } from './components/guarduser/auth.guard';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
+  /*{ path: 'register', component: RegisterComponent },
   { path: 'admin', component: PageAdminComponent },
   { path: 'user', component: PageUserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+   */
+   { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'admin', component: PageAdminComponent },
+  { path: 'user', component: PageUserComponent },
+  { path: 'login', component: LoginComponent },
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // { path: '**', redirectTo: '/home' } // Redirect to home for undefined routes
 ];
 
 @NgModule({

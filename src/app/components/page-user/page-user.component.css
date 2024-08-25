@@ -1,0 +1,32 @@
+/* Custom Navbar Styles */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-nav .nav-link {
+    margin-right: 15px;
+    font-weight: 500;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #0056b3; /* Color on hover */
+  }
+  
+  .navbar-nav .nav-link.active {
+    color: #007bff; /* Color for active link */
+    font-weight: bold;
+  }
+  
+  .navbar-toggler {
+    border-color: #007bff;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml,...'); /* Bootstrap default icon */
+  }
+  
+  /* Add margin to the router-outlet to keep content clear of navbar */
+  router-outlet {
+    margin-top: 1rem;
+  }
+  
