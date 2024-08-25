@@ -29,4 +29,21 @@
   router-outlet {
     margin-top: 1rem;
   }
-  
+  /* Style pour le bouton de déconnexion */
+.btn-logout {
+  background-color: red; /* Couleur de fond rouge */
+  color: lightgray; /* Couleur du texte gris clair */
+  border: none; /* Supprimer la bordure par défaut */
+  padding: 8px 16px; /* Ajouter un peu de padding pour l'espacement */
+  border-radius: 4px; /* Arrondir les coins du bouton */
+}
+
+.btn-logout:hover {
+  background-color: darkred; /* Couleur de fond plus sombre au survol */
+  color: white; /* Couleur du texte blanche au survol */
+}
+
+/* Style pour le nom de l'utilisateur */
+.navbar-nav .nav-link {
+  color: black; /* Couleur du texte */
+}
