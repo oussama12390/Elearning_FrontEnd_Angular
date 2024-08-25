@@ -1,2 +1,12 @@
-
-<router-outlet></router-outlet>
+<!-- src/app/app.component.html -->
+<nav>
+    <ul>
+      <li><a routerLink="/home">Home</a></li>
+      <li *ngIf="!authService.isAuthenticated()"><a routerLink="/login">Login</a></li>
+      <li *ngIf="!authService.isAuthenticated()"><a routerLink="/register">Register</a></li>
+      <li *ngIf="authService.isAuthenticated()"><a (click)="logout()">Logout</a></li>
+    </ul>
+  </nav>
+  
+  <router-outlet></router-outlet>
+  

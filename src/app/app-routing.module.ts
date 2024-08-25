@@ -7,15 +7,17 @@ import { LogOutComponent } from './components/log-out/log-out.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { AuthGuard } from './components/guards/auth.guard';
+import { PageAdminComponent } from './components/page-admin/page-admin.component';
+import { PageUserComponent } from './components/page-user/page-user.component';
 
 const routes: Routes = [
-  { path: 'signup', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'admin', component: PageAdminComponent },
+  { path: 'user', component: PageUserComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  {path:"logOut",component:LogOutComponent},
-  {path:"courses",component:CoursesComponent},
-  {path:"chat",component:ChatComponent},
-  {path:"categories",component:CategoriesComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({

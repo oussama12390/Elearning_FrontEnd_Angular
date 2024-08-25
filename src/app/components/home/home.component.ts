@@ -1,29 +1,33 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../../service/auth.service';
+// src/app/components/home/home.component.ts
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { UserService } from '../../service/user.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
 })
-export class HomeComponent {
-  userRole: string = ''; // Valeur par défaut
-  constructor(private authService: AuthService, private router: Router) {}
+export class HomeComponent implements OnInit {
+  user: any;
+
+  constructor(private userService: UserService, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    if (!this.authService.isAuthenticated()) {
-      // Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
-      this.router.navigate(['/login']);
-    } 
-   
+    if (this.authService.isAuthenticated()) {
+      this.userService.getCurrentUser().subscribe(
+        (data) => {
+          this.user = data;
+        },
+        (error) => {
+          console.error('Error fetching user details:', error);
+          this.router.navigateByUrl('/login'); // Redirect to login if there's an error
+        }
+      );
+    } else {
+      this.router.navigateByUrl('/login');
+    }
+  }
     
-  }
-  // Méthode de déconnexion
-  logout(): void {
-    this.authService.logout(); // Appel de la méthode de déconnexion dans AuthService
-    this.router.navigate(['/login']); // Rediriger vers la page de connexion
-  }
 
 }

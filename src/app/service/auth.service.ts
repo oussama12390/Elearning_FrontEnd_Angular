@@ -1,134 +1,98 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+// src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
-
-
-
-const BASE_URL = ['http://localhost:8080/']
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private baseUrl = 'http://localhost:8080'; // Base URL for API
+  private tokenKey = 'auth-token';
+  private userRoleKey = 'user-role';
+  private loggedIn = new BehaviorSubject<boolean>(false);
 
-  router: any;
- /* isAuthenticated() {
-    throw new Error('Method not implemented.');
+  constructor(private http: HttpClient, private router: Router) {
+    this.loggedIn.next(!!this.getToken());
   }
-    */
-  
-  private token: string | null = localStorage.getItem('JWT');
-  constructor(
-    private http: HttpClient,
-    private jwtHelper: JwtHelperService,
+
+  register(user: any) {
+    return this.http.post(`${this.baseUrl}/auth/signup`, user);
+  }
+
+  login(credentials: { email: string; password: string }) {
+    return this.http.post<{ token: string }>(`${this.baseUrl}/auth/signin`, credentials).subscribe(
+      (response) => {
+        this.setToken(response.token);
+        const role = this.getRoleFromToken(response.token);
+        this.setUserRole(role);
+        this.loggedIn.next(true);
+        this.router.navigateByUrl('/home');
+      },
+      (error) => {
+        console.error('Login failed:', error);
+      }
+    );
+  }
+
+  logout() {
+    this.clearToken();
+    this.loggedIn.next(false);
+    this.router.navigateByUrl('/login');
+  }
+
  
-  
-  ) { }
-
-  signup(signupRequest: any): Observable<any> {
-    return this.http.post(BASE_URL + "auth/signup", signupRequest)
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
   }
 
-  login(loginRequest: any): Observable<any> {
-    return this.http.post(BASE_URL + "auth/signin", loginRequest)
+  private setToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token);
+  }
+
+  private clearToken(): void {
+    localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(this.userRoleKey);
+  }
+
+  getRoleFromToken(token: string): string {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.role;
+  }
+
+  // getUserRole(): string | null {
+  //   return localStorage.getItem(this.userRoleKey);
+  // }
+
+  private setUserRole(role: string): void {
+    localStorage.setItem(this.userRoleKey, role);
+  }
+
+  isLoggedIn(): BehaviorSubject<boolean> {
+    return this.loggedIn;
   }
 
 
-  private createAuthorizationHeader() {
-    const jwtToken = localStorage.getItem('JWT');
-    if (jwtToken) {
-      return new HttpHeaders().set(
-        'Authorization', 'Bearer ' + jwtToken
-      )
-    } else {
-      console.log("JWT token not found in the Local Storage");
-    }
-    return null;
-  }
 
 
-
-//
-
-
+  // src/app/services/auth.service.ts
+getUserRole(): string | null {
+  // Ensure this method returns a synchronous value
+  return localStorage.getItem(this.userRoleKey);
+}
 /*
 isAuthenticated(): boolean {
-  const token = localStorage.getItem('token');
-
-  // Vérifier si le token existe
-  if (!token) {
-    return false;
-  }
-
-  // Vérifier si le token est expiré
-  if (this.jwtHelper.isTokenExpired(token)) {
-    return false;
-  }
-
-  // Décoder le token pour extraire les informations
-  try {
-    const decodedToken: any = jwt_decode(token);
-
-    // Vérifier des informations spécifiques dans le token, comme l'issuer ou l'audience
-    if (decodedToken.iss !== 'expected_issuer' || decodedToken.aud !== 'expected_audience') {
-      return false;
-    }
-
-    // Vous pouvez également vérifier d'autres champs du token ici si nécessaire
-    return true;
-
-  } catch (error) {
-    console.error('Invalid token:', error);
-    return false;
-  }
+  // Ensure this method returns a synchronous value
+  return !!this.getToken();
 }
   */
 isAuthenticated(): boolean {
-  const token = localStorage.getItem('JWT'); // Utilisation de la clé correcte
-  if (!token) {
-    return false;
+  const token = this.getToken();
+  if (token) {
+    // Optionally, you could verify the token's validity here
+    return true;
   }
-  
-  if (this.jwtHelper.isTokenExpired(token)) {
-    return false;
-  }
-
-  return true;
+  return false;
 }
-/*
- getUserRole(): string | null {
-    const token = localStorage.getItem('JWT');
-    if (token) {
-      try {
-        const decoded: any = jwt_decode(token);
-        return decoded.role || null; // Assurez-vous que 'role' est la clé correcte dans le payload du token
-      } catch (error) {
-        console.error('Token invalid or decoding failed', error);
-        return null;
-      }
-    }
-    return null;
-  }
-*/
-
-
-// Méthode pour décoder le token et obtenir le rôle
-
-
-
-
-
-logout(): void {
-  localStorage.removeItem('JWT'); // Suppression du token
- 
-}
-
-storeToken(token: string): void {
-  localStorage.setItem('token', token);
-}
- 
-}
-function jwt_decode(token: string): any {
-  throw new Error('Function not implemented.');
 }

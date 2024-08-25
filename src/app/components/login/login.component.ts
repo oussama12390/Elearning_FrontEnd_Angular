@@ -1,70 +1,25 @@
+// src/app/components/login/login.component.ts
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
 import { AuthService } from '../../service/auth.service';
-import { LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
 })
 export class LoginComponent {
-
   loginForm: FormGroup;
 
-  constructor(
-    private service: AuthService,
-    private fb: FormBuilder,
-    private router: Router,
-    private location: LocationStrategy
-
-  ) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
-   }
-
-  ngOnInit() {
-    this.loginForm = this.fb.group({
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required],
-    })
   }
-/*
-  login() {
-    console.log(this.loginForm.value);
-    this.service.login(this.loginForm.value).subscribe((response) => {
-      console.log(response);
-     if (response && response.token) {  // Par exemple, si le token est sous la clé 'token'
-      const jwtToken = response.token;
-      localStorage.setItem('JWT', jwtToken);
-      this.router.navigate(['/home']);
-    } else {
-      alert('Échec de la connexion : jeton JWT manquant ou invalide.');
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      this.authService.login(this.loginForm.value);
     }
-    
-    });
-  }
-*/
-login() {
-  console.log(this.loginForm.value);
-  this.service.login(this.loginForm.value).subscribe((response) => {
-    console.log(response);
-   if (response && response.token) {  // Par exemple, si le token est sous la clé 'token'
-    const jwtToken = response.token;
-    localStorage.setItem('JWT', jwtToken);
-    this.router.navigate(['/home']);
-  } else {
-    alert('Échec de la connexion : jeton JWT manquant ou invalide.');
   }
-  
-    });
-  }
-
-
-  
-
 }
