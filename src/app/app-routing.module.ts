@@ -10,10 +10,13 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { AuthGuard } from './components/guards/auth.guard';
 import { PageAdminComponent } from './components/page-admin/page-admin.component';
 import { PageUserComponent } from './components/page-user/page-user.component';
-import { AdminGuard } from './components/guardadmin/auth.guard';
-import { UserGuard } from './components/guarduser/auth.guard';
+
 import { MeetComponent } from './components/meet/meet.component';
 import { CategoryManagementComponent } from './components/category-management/category-management.component';
+import { UserChatComponent } from './components/user-chat/user-chat.component';
+import { UserCoursesComponent } from './components/user-courses/user-courses.component';
+import { UserCategoriyComponent } from './components/user-categoriy/user-categoriy.component';
+import { UserMeetComponent } from './components/user-meet/user-meet.component';
 
 const routes: Routes = [
   /*{ path: 'register', component: RegisterComponent },
@@ -34,6 +37,13 @@ const routes: Routes = [
   {path:'courses',component:CoursesComponent},
   {path:'categories',component:CategoryManagementComponent},
   {path:'meet',component:MeetComponent},
+
+
+
+  {path:'user-chat',component:UserChatComponent},
+  {path:'user-courses',component:UserCoursesComponent},
+  {path:'user-categoriy',component:UserCategoriyComponent},
+  {path:'user-meet',component:UserMeetComponent},
 ];
 
 @NgModule({

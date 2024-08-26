@@ -19,7 +19,11 @@ import { CommonModule } from '@angular/common';
 import { PageAdminComponent } from './components/page-admin/page-admin.component';
 import { PageUserComponent } from './components/page-user/page-user.component';
 import { MeetComponent } from './components/meet/meet.component';
-import { CategoryManagementComponent } from './components/category-management/category-management.component';  // Import CommonModule
+import { CategoryManagementComponent } from './components/category-management/category-management.component';
+import { UserCoursesComponent } from './components/user-courses/user-courses.component';
+import { UserChatComponent } from './components/user-chat/user-chat.component';
+import { UserCategoriyComponent } from './components/user-categoriy/user-categoriy.component';
+import { UserMeetComponent } from './components/user-meet/user-meet.component';  // Import CommonModule
 
 
 @NgModule({
@@ -36,6 +40,10 @@ import { CategoryManagementComponent } from './components/category-management/ca
     PageUserComponent,
     MeetComponent,
     CategoryManagementComponent,
+    UserCoursesComponent,
+    UserChatComponent,
+    UserCategoriyComponent,
+    UserMeetComponent,
     
   ],
   imports: [
