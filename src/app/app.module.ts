@@ -18,7 +18,8 @@ import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { CommonModule } from '@angular/common';
 import { PageAdminComponent } from './components/page-admin/page-admin.component';
 import { PageUserComponent } from './components/page-user/page-user.component';
-import { MeetComponent } from './components/meet/meet.component';  // Import CommonModule
+import { MeetComponent } from './components/meet/meet.component';
+import { CategoryManagementComponent } from './components/category-management/category-management.component';  // Import CommonModule
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { MeetComponent } from './components/meet/meet.component';  // Import Com
     PageAdminComponent,
     PageUserComponent,
     MeetComponent,
+    CategoryManagementComponent,
     
   ],
   imports: [

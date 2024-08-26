@@ -13,6 +13,7 @@ import { PageUserComponent } from './components/page-user/page-user.component';
 import { AdminGuard } from './components/guardadmin/auth.guard';
 import { UserGuard } from './components/guarduser/auth.guard';
 import { MeetComponent } from './components/meet/meet.component';
+import { CategoryManagementComponent } from './components/category-management/category-management.component';
 
 const routes: Routes = [
   /*{ path: 'register', component: RegisterComponent },
@@ -31,7 +32,7 @@ const routes: Routes = [
   //{ path: '**', redirectTo: '/login' }, // Redirect to home for undefined routes
   {path:'chat',component:ChatComponent},
   {path:'courses',component:CoursesComponent},
-  {path:'categories',component:CategoriesComponent},
+  {path:'categories',component:CategoryManagementComponent},
   {path:'meet',component:MeetComponent},
 ];
 

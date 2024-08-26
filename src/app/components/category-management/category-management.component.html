@@ -1,0 +1,29 @@
+<app-page-admin></app-page-admin>
+<div class="container mt-3">
+    <h2>Category Management</h2>
+  
+    <form (ngSubmit)="isEditMode ? onUpdate() : onAdd()">
+      <div class="form-group">
+        <label for="name">Category Name:</label>
+        <input type="text" id="name" class="form-control" [(ngModel)]="currentCategory.name" name="name" required />
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">
+        {{ isEditMode ? 'Update Category' : 'Add Category' }}
+      </button>
+      <button type="button" class="btn btn-secondary mt-2" (click)="onCancel()">Cancel</button>
+    </form>
+  
+    <hr>
+  
+    <h3>Existing Categories</h3>
+    <ul class="list-group">
+      <li *ngFor="let category of categories" class="list-group-item d-flex justify-content-between align-items-center">
+        {{ category.name }}
+        <div>
+          <button class="btn btn-info btn-sm" (click)="onEdit(category)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="onDelete(category.id!)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
