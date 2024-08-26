@@ -13,7 +13,9 @@ export class CategoryService {
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('auth-token');
-    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);//to add an Authorization header
+    //The "Authorization" header allows the server to verify that the request is being made by 
+    //an authenticated user. The server checks the token to determine if the user is authorized to access the requested resource.
   }
   
 
@@ -34,7 +36,8 @@ export class CategoryService {
   }
 
   deleteCategory(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/categories/${id}`);
-  }
+    return this.http.delete<void>(`${this.baseUrl}/${id}`, { headers: this.getHeaders() });
+}
+
   
 }

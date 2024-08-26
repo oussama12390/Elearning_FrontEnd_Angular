@@ -35,6 +35,10 @@ export class CategoryManagementComponent implements OnInit {
   }
 
   onAdd(): void {
+    if (!this.currentCategory.name || this.currentCategory.name.trim() === '') {
+      alert('Please enter category name for add');
+      return;
+    }
     this.categoryService.addCategory(this.currentCategory).subscribe({
       next: () => {
         this.resetForm();
