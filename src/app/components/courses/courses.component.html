@@ -1,60 +1,55 @@
-
-  
-    <div *ngIf="!selectedCourse" class="card mb-4">
-      <div class="card-header">
-        <h3>New Course</h3>
-      </div>
-      <div class="card-body">
-        <div class="form-group mb-3">
-          <label for="newCourseName">Name</label>
-          <input
-            id="newCourseName"
-            [(ngModel)]="newCourse.name"
-            placeholder="Name"
-            class="form-control"
-            type="text"
-          />
-        </div>
-        <div class="form-group mb-3">
-          <label for="newCourseDescription">Description</label>
-          <input
-            id="newCourseDescription"
-            [(ngModel)]="newCourse.description"
-            placeholder="Description"
-            class="form-control"
-            type="text"
-          />
-        </div>
-        <div class="form-group mb-3">
-          <label for="newCourseCategory">Category</label>
-          <select
-            id="newCourseCategory"
-            [(ngModel)]="newCourse.categoryId"
-            class="form-control"
-          >
-            <option *ngFor="let category of categories" [value]="category.id">
-              {{ category.name }}
-            </option>
-          </select>
-        </div>
-        <button class="btn btn-success" (click)="saveCourse()">Add Course</button>
-      </div>
+<div *ngIf="!selectedCourse" class="card mb-4">
+  <div class="card-header">
+    <h3>New Course</h3>
+  </div>
+  <div class="card-body">
+    <div class="form-group mb-3">
+      <label for="newCourseName">Name</label>
+      <input
+        id="newCourseName"
+        [(ngModel)]="newCourse.name"
+        placeholder="Name"
+        class="form-control"
+        type="text"
+      />
     </div>
-  
-    <h3 class="mt-4">All Courses</h3>
-    <ul class="list-group">
-      <li
-        *ngFor="let course of courses"
-        class="list-group-item d-flex justify-content-between align-items-center"
-      >
-        <span>
-          {{ course.name }} - {{ course.description }} (Category: {{ course.categoryId }})
-        </span>
-        <div>
-          <button class="btn btn-sm btn-warning mr-2" (click)="editCourse(course)">Edit</button>
-          <button class="btn btn-sm btn-danger" (click)="deleteCourse(course.id!)">Delete</button>
-        </div>
-      </li>
-    </ul>
- 
-  
+    <div class="form-group mb-3">
+      <label for="newCourseDescription">Description</label>
+      <input
+        id="newCourseDescription"
+        [(ngModel)]="newCourse.description"
+        placeholder="Description"
+        class="form-control"
+        type="text"
+      />
+    </div>
+          <!-- Category Selection -->
+<div class="form-group mb-3">
+  <label for="newCourseCategory">Category</label>
+  <select
+    id="newCourseCategory"
+    [(ngModel)]="newCourse.categoryId"
+    class="form-control"
+  >
+    <option *ngFor="let category of categories" [value]="category.id">
+      {{ category.name }}
+    </option>
+  </select>
+</div>
+
+<!-- User Selection -->
+<div class="form-group mb-3">
+  <label for="newCourseUser">User</label>
+  <select
+    id="newCourseUser"
+    [(ngModel)]="newCourse.ourUsersId"
+    class="form-control"
+  >
+    <option *ngFor="let user of users" [value]="user.id">
+      {{ user.email }}
+    </option>
+  </select>
+</div>
+    <button class="btn btn-success" (click)="saveCourse()">Add Course</button>
+  </div>
+  </div>

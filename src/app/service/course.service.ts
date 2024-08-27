@@ -1,5 +1,3 @@
-
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -23,7 +21,7 @@ export class CourseService {
   }
 
   getAllCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(`${this.baseUrl}/user/all/courses`);
+    return this.http.get<Course[]>(`${this.baseUrl}/admin/all/courses`);
   }
 
   getCourseById(id: number): Observable<Course> {
@@ -49,4 +47,12 @@ export class CourseService {
   getCoursesByUser(userId: number): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseUrl}/user/${userId}`, { headers: this.getHeaders() });
   }
+
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/admin/users`, { headers: this.getHeaders() });
+  }
+//   getUserById(userId: number): Observable<any> {
+//   return this.http.get<any>(`${this.baseUrl}/admin/get/user/${userId}`, { headers: this.getHeaders() });
+// }
+
 }

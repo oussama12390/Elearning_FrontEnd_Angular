@@ -13,6 +13,7 @@ export class CoursesComponent implements OnInit {
   categories: Category[] = [];  // Assuming you have a Category model
   selectedCourse: Course | null = null;
   newCourse: Course = { name: '', description: '', categoryId: null, ourUsersId: null };
+  users: any[] = [];
 
   constructor(private courseService: CourseService, private categoryService: CategoryService) {}
 
@@ -20,11 +21,18 @@ export class CoursesComponent implements OnInit {
     this.getAllCourses();
     this.getAllCategories();
     this.setLoggedInUser();
+    this.loadUsers(); 
   }
 
   getAllCourses(): void {
     this.courseService.getAllCourses().subscribe(data => {
       this.courses = data;
+    });
+  }
+
+  loadUsers() {
+    this.courseService.getUsers().subscribe((data: any[]) => {
+      this.users = data;
     });
   }
 
@@ -39,13 +47,35 @@ export class CoursesComponent implements OnInit {
     this.newCourse.ourUsersId = userId ? +userId : null;
   }
 
+  // saveCourse(): void {
+  //   console.log("Adding new course:", this.newCourse); // Debug line to check the newCourse object
+  
+  //   if (this.selectedCourse) {
+  //     this.courseService.updateCourse(this.selectedCourse.id!, this.newCourse).subscribe(() => {
+  //       this.getAllCourses();
+  //       this.selectedCourse = null;
+  //     });
+  //   } else {
+  //     this.courseService.createCourse(this.newCourse).subscribe(() => {
+  //       this.getAllCourses();
+  //       this.newCourse = { name: '', description: '', categoryId: null, ourUsersId: null };
+  //       this.setLoggedInUser();  // Reset the userId for the new course form
+  //     });
+  //   }
+  // }
+
   saveCourse(): void {
+    console.log("Adding new course:", this.newCourse); // Debug line to check the newCourse object
+    
     if (this.selectedCourse) {
-      this.courseService.createCourse(this.newCourse).subscribe(() => {
+      this.courseService.updateCourse(this.selectedCourse.id!, this.newCourse).subscribe(() => {
         this.getAllCourses();
         this.selectedCourse = null;
       });
     } else {
+      // Debugging step: Log the new course details before sending the request
+      console.log("Course to be saved:", this.newCourse);
+  
       this.courseService.createCourse(this.newCourse).subscribe(() => {
         this.getAllCourses();
         this.newCourse = { name: '', description: '', categoryId: null, ourUsersId: null };
@@ -53,6 +83,9 @@ export class CoursesComponent implements OnInit {
       });
     }
   }
+  
+  
+  
 
   editCourse(course: Course): void {
     this.selectedCourse = { ...course };
@@ -61,6 +94,7 @@ export class CoursesComponent implements OnInit {
   deleteCourse(id: number): void {
     this.courseService.deleteCourse(id).subscribe(() => {
       this.getAllCourses();
-    });
-  }
+    });
+  }
+
 }
