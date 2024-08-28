@@ -32,7 +32,7 @@ export class CoursesComponent implements OnInit {
     this.getAllCategories();
     this.setLoggedInUser();
     this.loadUsers(); 
-
+///add 
     if (this.authService.isAuthenticated()) {
       this.userService.getCurrentUser().subscribe(
         (data) => {
@@ -91,7 +91,9 @@ export class CoursesComponent implements OnInit {
   editCourse(course: Course): void {
     this.selectedCourse = { ...course };
     this.newCourse = { ...course };
+    // console.log("juste testing",this.selectedCourse);
   }
+ 
 
   // deleteCourse(id: number): void {
   //   this.courseService.deleteCourse(id).subscribe(() => {

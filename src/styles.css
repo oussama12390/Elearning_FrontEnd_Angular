@@ -1,130 +1,153 @@
 
 
-
-
-
-
-
-
-
-
-
-
-  /* Centered card with shadow */
-
-
-
-
-
-
-
-
-
-
-
-
-/* Général */
-
-
-/* Carte centrée et réduite */
 .centered-card {
-  max-width: 500px; /* Diminuer la largeur de la carte */
-  margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  width: 100%;
+  max-width: 800px;
   background-color: #fff;
-  padding: 40px; /* Ajouter un padding pour espacer le contenu */
- 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  margin-left: 500px;
 }
 
-/* En-tête de la carte */
 .card-header {
-  background-color: #007bff;
+  background-color: #343a40; /* Couleur de fond de l'en-tête de la carte */
   color: #fff;
-  text-align: center;
-  padding: 10px;
+  border-bottom: 2px solid #dee2e6;
+  padding: 1rem;
   border-radius: 8px 8px 0 0;
-  
-  
+  text-align: center;
+
 }
 
-/* En-tête secondaire de la carte */
-.card-header.secondary {
-  background-color: #6c757d;
+.card-header h3 {
+  margin: 0;
+  color:rgb(14, 13, 13);
 }
 
-/* Champs de formulaire */
+.card-body {
+  padding: 1.5rem;
+}
+
 .form-group label {
-  font-weight: bold;
+  font-weight: 600;
+  color: #495057;
 }
 
-.form-group input,
-.form-group select {
+.form-control {
   border-radius: 4px;
   border: 1px solid #ced4da;
-  padding: 8px;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 4px;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
-/* Boutons */
-.btn {
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 16px;
+.form-control:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
 }
 
 .btn-primary {
   background-color: #007bff;
-  border: none;
+  border-color: #007bff;
 }
 
 .btn-primary:hover {
   background-color: #0056b3;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  border: none;
-}
-
-.btn-danger:hover {
-  background-color: #c82333;
+  border-color: #004085;
 }
 
 .btn-secondary {
   background-color: #6c757d;
-  border: none;
+  border-color: #6c757d;
 }
 
 .btn-secondary:hover {
   background-color: #5a6268;
+  border-color: #545b62;
 }
 
-/* Liste des cours */
-.list-group {
-  padding: 0;
-  margin: 0;
+.btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 3px rgba(167, 164, 164, 0.1);
 }
 
 .list-group-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%; /* Occuper toute la largeur disponible dans la carte */
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-radius: 4px;
-  border: 1px solid #dee2e6;
+  padding: 1rem;
+  border: none;
+  border-bottom: 1px solid #dee2e6;
+
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+h5 {
+  color: #343a40;
+}
+
+p {
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+h3{
+  color: black;
+}
+
+
+/* Liste des cours */
+.card {
+  max-width: 900px; /* Réduit la largeur maximale de la carte */
+  margin-top: 40px; /* Ajuste l'espacement au-dessus de la carte */
+  margin-left: 500px;
+}
+
+.card-header {
+  background-color: #343a40; /* Couleur de fond de l'en-tête de la carte */
+  color: #fff; /* Couleur du texte de l'en-tête */
+  border-bottom: 2px solid #dee2e6; /* Bordure inférieure de l'en-tête */
+  padding: 0.75rem; /* Réduit l'espace interne de l'en-tête */
+}
+
+.card-body {
+  padding: 1rem; /* Réduit l'espace interne du corps de la carte */
+}
+
+.list-group-item {
+  padding: 0.75rem; /* Réduit le padding des éléments de la liste */
 }
 
 .list-group-item h5 {
-  margin-bottom: 0.5rem;
+  font-size: 1.125rem; /* Réduit la taille du titre des éléments de la liste */
 }
 
 .list-group-item p {
-  margin-bottom: 0;
-  color: #6c757d;
+  font-size: 0.875rem; /* Réduit la taille du texte des éléments de la liste */
 }
