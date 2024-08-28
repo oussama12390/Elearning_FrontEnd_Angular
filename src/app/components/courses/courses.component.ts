@@ -3,25 +3,44 @@ import { CourseService } from '../../service/course.service';
 import { Course } from '../../components/model/course.model';
 import { CategoryService } from '../../service/category.service';  // Assuming you have a service for categories
 import { Category } from '../model/category.model';
+import { AuthService } from '../../service/auth.service';
+import { UserService } from '../../service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html'
 })
 export class CoursesComponent implements OnInit {
+  user: any;
   courses: Course[] = [];
   categories: Category[] = [];  // Assuming you have a Category model
   selectedCourse: Course | null = null;
   newCourse: Course = { name: '', description: '', categoryId: null, ourUsersId: null };
   users: any[] = [];
 
-  constructor(private courseService: CourseService, private categoryService: CategoryService) {}
+  constructor(private courseService: CourseService, private categoryService: CategoryService,private  authService:AuthService,private  userService:UserService,private router:Router) {}
 
   ngOnInit(): void {
     this.getAllCourses();
     this.getAllCategories();
     this.setLoggedInUser();
     this.loadUsers(); 
+
+    if (this.authService.isAuthenticated()) {
+      this.userService.getCurrentUser().subscribe(
+        (data) => {
+          this.user = data;
+        },
+        (error) => {
+          console.error('Error fetching user details:', error);
+        }
+      );
+    } else {
+      console.error('User is not authenticated');
+      // Optionally, you can redirect to login or show an error message
+      this.router.navigateByUrl('/login');
+    }
   }
 
   getAllCourses(): void {

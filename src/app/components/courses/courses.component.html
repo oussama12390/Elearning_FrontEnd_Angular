@@ -1,6 +1,8 @@
-<div *ngIf="!selectedCourse" class="card mb-4">
+
+<app-page-admin></app-page-admin>
+<div *ngIf="!selectedCourse" class="card mb-4 centered-card">
   <div class="card-header">
-    <h3>New Course</h3>
+    <h3>Managment of Courses</h3>
   </div>
   <div class="card-body">
     <div class="form-group mb-3">
@@ -23,33 +25,33 @@
         type="text"
       />
     </div>
-          <!-- Category Selection -->
-<div class="form-group mb-3">
-  <label for="newCourseCategory">Category</label>
-  <select
-    id="newCourseCategory"
-    [(ngModel)]="newCourse.categoryId"
-    class="form-control"
-  >
-    <option *ngFor="let category of categories" [value]="category.id">
-      {{ category.name }}
-    </option>
-  </select>
-</div>
+    <!-- Category Selection -->
+    <div class="form-group mb-3">
+      <label for="newCourseCategory">Category</label>
+      <select
+        id="newCourseCategory"
+        [(ngModel)]="newCourse.categoryId"
+        class="form-control"
+      >
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
 
-<!-- User Selection -->
-<div class="form-group mb-3">
-  <label for="newCourseUser">User</label>
-  <select
-    id="newCourseUser"
-    [(ngModel)]="newCourse.ourUsersId"
-    class="form-control"
-  >
-    <option *ngFor="let user of users" [value]="user.id">
-      {{ user.email }}
-    </option>
-  </select>
-</div>
+    <!-- User Selection -->
+    <div class="form-group mb-3">
+      <label for="newCourseUser">Email of User</label>
+      <select
+        id="newCourseUser"
+        [(ngModel)]="newCourse.ourUsersId"
+        class="form-control"
+      >
+        <option  [value]="user.id">
+          {{ user.email }}
+        </option>
+      </select>
+    </div>
     <button class="btn btn-success" (click)="saveCourse()">Add Course</button>
-  </div>
-  </div>
+  </div>
+</div>
