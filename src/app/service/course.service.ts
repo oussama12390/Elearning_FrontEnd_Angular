@@ -48,4 +48,9 @@ export class CourseService {
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/admin/users`, { headers: this.getHeaders() });
   }
+
+  getAllCoursesUser(): Observable<Course[]> {
+    return this.http.get<Course[]>(`${this.baseUrl}/user/all/courses`, { headers: this.getHeaders() });
+  }
+
 }

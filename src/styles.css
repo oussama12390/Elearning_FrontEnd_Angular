@@ -151,3 +151,15 @@ h3{
 .list-group-item p {
   font-size: 0.875rem; /* Réduit la taille du texte des éléments de la liste */
 }
+
+
+
+
+
+
+
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}

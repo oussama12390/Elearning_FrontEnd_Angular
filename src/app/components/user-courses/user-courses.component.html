@@ -1,2 +1,39 @@
 <app-page-user></app-page-user>
-<p>user-courses works!</p>
+
+
+
+<!-- Affichage des cours sous forme de cartes -->
+<!-- Affichage des cours sous forme de cartes -->
+<!-- Affichage des cours sous forme de cartes -->
+<div *ngIf="courses.length" class="container mt-4">
+  <div class="row">
+    <div *ngFor="let course of courses" class="col-md-12 mb-1"> <!-- Trois éléments par ligne -->
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row d-flex align-items-center">
+            <div class="col-4">
+              <img src="URL_DE_VOTRE_IMAGE" class="img-fluid rounded-3" alt="{{ course.name }}">
+            </div>
+            <div class="col-8">
+              <h5 class="fw-bold">{{ course.name }}</h5>
+              <p class="text-muted">{{ course.description }}</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <p class="mb-0 text-primary">Progression: 75%</p>
+                <button class="btn btn-primary btn-sm">Details</button>
+              </div>
+              <div class="text-end mt-3">
+                <a href="#!" class="text-danger"><i class="fas fa-trash-alt fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
