@@ -11,58 +11,113 @@
 
 
   /* Centered card with shadow */
+
+
+
+
+
+
+
+
+
+
+
+
+/* Général */
+
+
+/* Carte centrée et réduite */
 .centered-card {
-  max-width: 600px;
+  max-width: 500px; /* Diminuer la largeur de la carte */
   margin: 0 auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 40px; /* Ajouter un padding pour espacer le contenu */
+ 
 }
 
-/* Responsive card for wider content */
-.card.wider-card {
-  max-width: 800px;
+/* En-tête de la carte */
+.card-header {
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+  
+  
 }
 
-/* Form label styling */
+/* En-tête secondaire de la carte */
+.card-header.secondary {
+  background-color: #6c757d;
+}
+
+/* Champs de formulaire */
 .form-group label {
   font-weight: bold;
 }
 
-/* Input and select element styling */
-.form-control {
-  border-radius: 0.25rem;
+.form-group input,
+.form-group select {
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 4px;
 }
 
-/* Button group styling */
-.d-flex .btn {
-  flex: 1;
-  margin-right: 0.5rem;
+/* Boutons */
+.btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
-.d-flex .btn:last-child {
-  margin-right: 0;
-}
-
-/* Header styling for cards */
-.card-header {
+.btn-primary {
   background-color: #007bff;
-  color: #3caf59;
-  text-align: center;
-  
+  border: none;
 }
 
-.card-header.secondary {
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-secondary {
   background-color: #6c757d;
-
+  border: none;
 }
 
-/* Course list item styling */
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Liste des cours */
+.list-group {
+  padding: 0;
+  margin: 0;
+}
+
 .list-group-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 800px;
-  height: 100px;
- margin-left: 500px;
+  width: 100%; /* Occuper toute la largeur disponible dans la carte */
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
 }
 
 .list-group-item h5 {

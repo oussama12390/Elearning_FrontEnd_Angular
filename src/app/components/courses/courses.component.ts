@@ -93,12 +93,20 @@ export class CoursesComponent implements OnInit {
     this.newCourse = { ...course };
   }
 
+  // deleteCourse(id: number): void {
+  //   this.courseService.deleteCourse(id).subscribe(() => {
+  //     this.getAllCourses();
+  //     this.resetForm();
+  //   });
+  // }
   deleteCourse(id: number): void {
     this.courseService.deleteCourse(id).subscribe(() => {
-      this.getAllCourses();
-      this.resetForm();
+      // Mise à jour locale du tableau de cours
+      this.courses = this.courses.filter(course => course.id !== id);
+      this.resetForm();  // Réinitialise le formulaire si nécessaire
     });
   }
+  
 
   cancelEdit(): void {
     this.selectedCourse = null;
