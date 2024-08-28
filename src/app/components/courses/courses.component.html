@@ -1,10 +1,11 @@
-
 <app-page-admin></app-page-admin>
-<div *ngIf="!selectedCourse" class="card mb-4 centered-card">
+
+<div class="card mb-4 centered-card">
   <div class="card-header">
-    <h3>Managment of Courses</h3>
+    <h3>Management of Courses</h3>
   </div>
   <div class="card-body">
+    <!-- Course Form -->
     <div class="form-group mb-3">
       <label for="newCourseName">Name</label>
       <input
@@ -15,6 +16,7 @@
         type="text"
       />
     </div>
+
     <div class="form-group mb-3">
       <label for="newCourseDescription">Description</label>
       <input
@@ -25,7 +27,7 @@
         type="text"
       />
     </div>
-    <!-- Category Selection -->
+
     <div class="form-group mb-3">
       <label for="newCourseCategory">Category</label>
       <select
@@ -39,7 +41,6 @@
       </select>
     </div>
 
-    <!-- User Selection -->
     <div class="form-group mb-3">
       <label for="newCourseUser">Email of User</label>
       <select
@@ -47,11 +48,44 @@
         [(ngModel)]="newCourse.ourUsersId"
         class="form-control"
       >
-        <option  [value]="user.id">
+        <option *ngFor="let user of users" [value]="user.id">
           {{ user.email }}
         </option>
       </select>
     </div>
-    <button class="btn btn-success" (click)="saveCourse()">Add Course</button>
+
+    <!-- Initial Action Buttons -->
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-primary" (click)="saveCourse()">Add Course</button>
+      <button class="btn btn-secondary" (click)="resetForm()" *ngIf="selectedCourse">Cancel</button>
+    </div>
+
+    <!-- Update and Delete Buttons -->
+    <div *ngIf="selectedCourse" class="d-flex justify-content-between mt-3">
+      <div>
+        <button class="btn btn-secondary" (click)="saveCourse()">Update Course</button>
+      </div>
+    </div>
   </div>
+</div>
+
+<!-- List of Courses -->
+<div *ngIf="courses.length" class="card mt-4">
+  <div class="card-header">
+    <h3>Existing Courses</h3>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let course of courses" class="list-group-item">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h5>{{ course.name }}</h5>
+          <p>{{ course.description }}</p>
+        </div>
+        <div>
+          <button class="btn btn-primary" (click)="editCourse(course)">Edit</button>
+          <button class="btn btn-danger ms-2" (click)="deleteCourse(course.id!)">Delete</button>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Course } from '../components/model/course.model';
-//import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +14,11 @@ export class CourseService {
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('auth-token');
-    return new HttpHeaders().set('Authorization', `Bearer ${token}`);//to add an Authorization header
-    //The "Authorization" header allows the server to verify that the request is being made by 
-    //an authenticated user. The server checks the token to determine if the user is authorized to access the requested resource.
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 
   getAllCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(`${this.baseUrl}/admin/all/courses`);
+    return this.http.get<Course[]>(`${this.baseUrl}/admin/all/courses`, { headers: this.getHeaders() });
   }
 
   getCourseById(id: number): Observable<Course> {
@@ -50,9 +47,5 @@ export class CourseService {
 
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/admin/users`, { headers: this.getHeaders() });
-  }
-//   getUserById(userId: number): Observable<any> {
-//   return this.http.get<any>(`${this.baseUrl}/admin/get/user/${userId}`, { headers: this.getHeaders() });
-// }
-
+  }
 }

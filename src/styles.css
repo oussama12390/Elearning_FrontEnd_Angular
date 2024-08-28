@@ -1,20 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Centered card with shadow */
 .centered-card {
-    max-width: 800px; /* Adjust the width as needed */
-    margin: 0 auto; /* Center the card horizontally */
-    padding: 20px; /* Add some padding inside the card */
-    margin-top: 150px;
-  }
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive card for wider content */
+.card.wider-card {
+  max-width: 800px;
+}
+
+/* Form label styling */
+.form-group label {
+  font-weight: bold;
+}
+
+/* Input and select element styling */
+.form-control {
+  border-radius: 0.25rem;
+}
+
+/* Button group styling */
+.d-flex .btn {
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.d-flex .btn:last-child {
+  margin-right: 0;
+}
+
+/* Header styling for cards */
+.card-header {
+  background-color: #007bff;
+  color: #3caf59;
+  text-align: center;
   
-  .card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a shadow effect */
-  }
-  
-  .card-header h3 {
-    font-size: 1.5rem; /* Adjust the font size of the header */
-  }
-  
-  .form-control {
-    font-size: 0.875rem; /* Adjust the font size of the input fields */
-  }
-  
+}
+
+.card-header.secondary {
+  background-color: #6c757d;
+
+}
+
+/* Course list item styling */
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 800px;
+  height: 100px;
+ margin-left: 500px;
+}
+
+.list-group-item h5 {
+  margin-bottom: 0.5rem;
+}
+
+.list-group-item p {
+  margin-bottom: 0;
+  color: #6c757d;
+}

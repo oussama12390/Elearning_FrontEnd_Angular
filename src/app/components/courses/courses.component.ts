@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../service/course.service';
 import { Course } from '../../components/model/course.model';
-import { CategoryService } from '../../service/category.service';  // Assuming you have a service for categories
+import { CategoryService } from '../../service/category.service';
 import { Category } from '../model/category.model';
 import { AuthService } from '../../service/auth.service';
 import { UserService } from '../../service/user.service';
@@ -14,12 +14,18 @@ import { Router } from '@angular/router';
 export class CoursesComponent implements OnInit {
   user: any;
   courses: Course[] = [];
-  categories: Category[] = [];  // Assuming you have a Category model
+  categories: Category[] = [];
   selectedCourse: Course | null = null;
   newCourse: Course = { name: '', description: '', categoryId: null, ourUsersId: null };
   users: any[] = [];
 
-  constructor(private courseService: CourseService, private categoryService: CategoryService,private  authService:AuthService,private  userService:UserService,private router:Router) {}
+  constructor(
+    private courseService: CourseService, 
+    private categoryService: CategoryService,
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getAllCourses();
@@ -38,7 +44,6 @@ export class CoursesComponent implements OnInit {
       );
     } else {
       console.error('User is not authenticated');
-      // Optionally, you can redirect to login or show an error message
       this.router.navigateByUrl('/login');
     }
   }
@@ -49,7 +54,7 @@ export class CoursesComponent implements OnInit {
     });
   }
 
-  loadUsers() {
+  loadUsers(): void {
     this.courseService.getUsers().subscribe((data: any[]) => {
       this.users = data;
     });
@@ -62,58 +67,46 @@ export class CoursesComponent implements OnInit {
   }
 
   setLoggedInUser(): void {
-    const userId = localStorage.getItem('userId');  // Assume userId is stored in localStorage when the user logs in
+    const userId = localStorage.getItem('userId');
     this.newCourse.ourUsersId = userId ? +userId : null;
   }
 
-  // saveCourse(): void {
-  //   console.log("Adding new course:", this.newCourse); // Debug line to check the newCourse object
-  
-  //   if (this.selectedCourse) {
-  //     this.courseService.updateCourse(this.selectedCourse.id!, this.newCourse).subscribe(() => {
-  //       this.getAllCourses();
-  //       this.selectedCourse = null;
-  //     });
-  //   } else {
-  //     this.courseService.createCourse(this.newCourse).subscribe(() => {
-  //       this.getAllCourses();
-  //       this.newCourse = { name: '', description: '', categoryId: null, ourUsersId: null };
-  //       this.setLoggedInUser();  // Reset the userId for the new course form
-  //     });
-  //   }
-  // }
-
   saveCourse(): void {
-    console.log("Adding new course:", this.newCourse); // Debug line to check the newCourse object
+    console.log("Adding new course:", this.newCourse);
     
     if (this.selectedCourse) {
       this.courseService.updateCourse(this.selectedCourse.id!, this.newCourse).subscribe(() => {
         this.getAllCourses();
         this.selectedCourse = null;
+        this.resetForm();
       });
     } else {
-      // Debugging step: Log the new course details before sending the request
-      console.log("Course to be saved:", this.newCourse);
-  
       this.courseService.createCourse(this.newCourse).subscribe(() => {
         this.getAllCourses();
-        this.newCourse = { name: '', description: '', categoryId: null, ourUsersId: null };
-        this.setLoggedInUser();  // Reset the userId for the new course form
+        this.resetForm();
       });
     }
   }
-  
-  
-  
 
   editCourse(course: Course): void {
     this.selectedCourse = { ...course };
+    this.newCourse = { ...course };
   }
 
   deleteCourse(id: number): void {
     this.courseService.deleteCourse(id).subscribe(() => {
       this.getAllCourses();
-    });
-  }
+      this.resetForm();
+    });
+  }
 
+  cancelEdit(): void {
+    this.selectedCourse = null;
+    this.resetForm();
+  }
+
+  resetForm(): void {
+    this.newCourse = { name: '', description: '', categoryId: null, ourUsersId: null };
+    this.setLoggedInUser();
+  }
 }
