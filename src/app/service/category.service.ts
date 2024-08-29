@@ -8,6 +8,7 @@ import { Category } from '../components/model/category.model';
 })
 export class CategoryService {
   private baseUrl = 'http://localhost:8080/admin/categories';
+  private api="http://localhost:8080/user/categories/all"
 
   constructor(private http: HttpClient) {}
 
@@ -39,5 +40,11 @@ export class CategoryService {
     return this.http.delete<void>(`${this.baseUrl}/${id}`, { headers: this.getHeaders() });
 }
 
+
+getAllCategoriesWithUser(): Observable<Category[]> {
+  return this.http.get<Category[]>(this.api, { headers: this.getHeaders() });
+}
+
+///user/categories/all
   
 }
