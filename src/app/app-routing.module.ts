@@ -17,6 +17,7 @@ import { UserChatComponent } from './components/user-chat/user-chat.component';
 import { UserCoursesComponent } from './components/user-courses/user-courses.component';
 import { UserCategoriyComponent } from './components/user-categoriy/user-categoriy.component';
 import { UserMeetComponent } from './components/user-meet/user-meet.component';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 const routes: Routes = [
   /*{ path: 'register', component: RegisterComponent },
@@ -52,3 +53,5 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
+//eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvdXNzYW1hQHVtcC5hYy5tYSIsImlhdCI6MTcyNTA0NDAyMiwiZXhwIjoxNzI1MTMwNDIyfQ.xKEpFBXD2MHoVO9Ak6HUK9ItcSsYVXv5IFCKTi3Fs0M/
+//http://localhost:8080/admin/api/images/upload

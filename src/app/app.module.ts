@@ -23,7 +23,8 @@ import { CategoryManagementComponent } from './components/category-management/ca
 import { UserCoursesComponent } from './components/user-courses/user-courses.component';
 import { UserChatComponent } from './components/user-chat/user-chat.component';
 import { UserCategoriyComponent } from './components/user-categoriy/user-categoriy.component';
-import { UserMeetComponent } from './components/user-meet/user-meet.component';  // Import CommonModule
+import { UserMeetComponent } from './components/user-meet/user-meet.component';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';  // Import CommonModule
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { UserMeetComponent } from './components/user-meet/user-meet.component'; 
     UserChatComponent,
     UserCategoriyComponent,
     UserMeetComponent,
+    ImageUploadComponent
     
   ],
   imports: [
@@ -53,9 +55,9 @@ import { UserMeetComponent } from './components/user-meet/user-meet.component'; 
     FormsModule,
     HttpClientModule,
     RouterModule,
-    CommonModule,  // Add CommonModule here
-  
-  ],
+    CommonModule,
+     
+],
   providers: [
     AuthService, // Ajoutez vos services ici
     JwtHelperService,
