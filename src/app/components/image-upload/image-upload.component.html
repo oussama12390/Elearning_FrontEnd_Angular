@@ -1,15 +1,26 @@
 <div class="container">
-    <h2>Upload Image</h2>
-    <form (ngSubmit)="onUpload()" enctype="multipart/form-data">
-      <div class="form-group">
-        <label for="file">Choose file</label>
-        <input type="file" id="file" (change)="onFileSelected($event)" class="form-control">
-      </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!selectedFile">Upload</button>
-    </form>
-  
-    <div *ngIf="uploadResponse">
-      <p>{{ uploadResponse }}</p>
+  <h2>Upload Image</h2>
+  <form (ngSubmit)="onUpload()" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="file">Choose file</label>
+      <input type="file" id="file" (change)="onFileSelected($event)" class="form-control">
     </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!selectedFile">Upload</button>
+  </form>
+
+  <div *ngIf="uploadResponse">
+    <p>{{ uploadResponse }}</p>
   </div>
-  
+
+  <h3>Uploaded Images</h3>
+  <div *ngIf="imageList.length > 0; else noImages">
+    <ul>
+      <li *ngFor="let image of imageList">
+        <img [src]="image" alt="Image" width="100">
+      </li>
+    </ul>
+  </div>
+  <ng-template #noImages>
+    <p>No images uploaded yet.</p>
+  </ng-template>
+</div>
