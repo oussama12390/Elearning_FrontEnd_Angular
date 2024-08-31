@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Image } from '../model/image.model'; // Assurez-vous d'avoir un modèle Image
 
 @Component({
   selector: 'app-image-upload',
@@ -53,9 +54,9 @@ export class ImageUploadComponent implements OnInit {
   }
 }
 
-interface Image {
-  id: number;
-  name: string;
-  type: string;
-  data: string;  // data sous forme base64 string
-}
+// interface Image {
+//   id: number;
+//   name: string;
+//   type: string;
+//   data: string;  // data sous forme base64 string
+// }

@@ -6,6 +6,7 @@ import { Category } from '../model/category.model';
 import { AuthService } from '../../service/auth.service';
 import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
+import { Image } from '../model/image.model'; // Assurez-vous d'avoir un modèle Image
 
 @Component({
   selector: 'app-courses',
@@ -15,8 +16,9 @@ export class CoursesComponent implements OnInit {
   user: any;
   courses: Course[] = [];
   categories: Category[] = [];
+  images: Image[] = []; // Liste des images disponibles
   selectedCourse: Course | null = null;
-  newCourse: Course = { name: '', description: '', categoryId: null, ourUsersId: null };
+  newCourse: Course = { name: '', description: '', categoryId: null, ourUsersId: null, imageId: null }; // Ajouter imageId
   users: any[] = [];
 
   constructor(
@@ -31,8 +33,8 @@ export class CoursesComponent implements OnInit {
     this.getAllCourses();
     this.getAllCategories();
     this.setLoggedInUser();
-    this.loadUsers(); 
-///add 
+    this.loadUsers();
+    this.loadImages(); // Charger les images disponibles
     if (this.authService.isAuthenticated()) {
       this.userService.getCurrentUser().subscribe(
         (data) => {
@@ -44,6 +46,7 @@ export class CoursesComponent implements OnInit {
       );
     } else {
       console.error('User is not authenticated');
+      // Optionally, you can redirect to login or show an error message
       this.router.navigateByUrl('/login');
     }
   }
@@ -66,14 +69,18 @@ export class CoursesComponent implements OnInit {
     });
   }
 
+  loadImages(): void {
+    this.courseService.getAllImages().subscribe((data: Image[]) => {
+      this.images = data;
+    });
+  }
+
   setLoggedInUser(): void {
     const userId = localStorage.getItem('userId');
     this.newCourse.ourUsersId = userId ? +userId : null;
   }
 
   saveCourse(): void {
-    console.log("Adding new course:", this.newCourse);
-    
     if (this.selectedCourse) {
       this.courseService.updateCourse(this.selectedCourse.id!, this.newCourse).subscribe(() => {
         this.getAllCourses();
@@ -91,24 +98,14 @@ export class CoursesComponent implements OnInit {
   editCourse(course: Course): void {
     this.selectedCourse = { ...course };
     this.newCourse = { ...course };
-    // console.log("juste testing",this.selectedCourse);
   }
- 
 
-  // deleteCourse(id: number): void {
-  //   this.courseService.deleteCourse(id).subscribe(() => {
-  //     this.getAllCourses();
-  //     this.resetForm();
-  //   });
-  // }
   deleteCourse(id: number): void {
     this.courseService.deleteCourse(id).subscribe(() => {
-      // Mise à jour locale du tableau de cours
       this.courses = this.courses.filter(course => course.id !== id);
-      this.resetForm();  // Réinitialise le formulaire si nécessaire
+      this.resetForm();
     });
   }
-  
 
   cancelEdit(): void {
     this.selectedCourse = null;
@@ -116,7 +113,7 @@ export class CoursesComponent implements OnInit {
   }
 
   resetForm(): void {
-    this.newCourse = { name: '', description: '', categoryId: null, ourUsersId: null };
+    this.newCourse = { name: '', description: '', categoryId: null, ourUsersId: null, imageId: null };
     this.setLoggedInUser();
   }
 }

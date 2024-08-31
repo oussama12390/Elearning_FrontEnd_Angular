@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Course } from '../components/model/course.model';
+ import { Image } from '../components/model/image.model'; // Assurez-vous d'avoir un modèle Image
 
 @Injectable({
   providedIn: 'root'
@@ -46,11 +47,15 @@ export class CourseService {
   }
 
   getUsers(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/admin/users`, { headers: this.getHeaders() });
+    return this.http.get<any[]>(`${this.baseUrl}/admin/users`, { headers: this.getHeaders() });
   }
 
   getAllCoursesUser(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseUrl}/user/all/courses`, { headers: this.getHeaders() });
   }
 
+  // Nouvelle méthode pour obtenir toutes les images disponibles
+  getAllImages(): Observable<Image[]> {
+    return this.http.get<Image[]>(`${this.baseUrl}/auth/api/images`);
+  }
 }

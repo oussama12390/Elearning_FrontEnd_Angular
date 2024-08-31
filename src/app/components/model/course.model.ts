@@ -4,5 +4,5 @@ export interface Course {
   description: string;
   categoryId?: number | null;
   ourUsersId?: number | null;
-  image?: ArrayBuffer;  // Utilisez ArrayBuffer pour stocker les données binaires
+  imageId?: number | null; // Assurez-vous que ce champ est présent // Champ pour l'URL de l'image  // Utilisez ArrayBuffer pour stocker les données binaires
 }
