@@ -49,12 +49,10 @@
         class="form-control"
       >
         <option *ngFor="let image of images" [value]="image.id">
-          {{ image.name }}  <!-- Assurez-vous que le modèle Image a un nom ou une description -->
+          {{ image.name }} 
         </option>
       </select>
     </div>
-    
-    
 
     <div class="form-group mb-3">
       <label for="newCourseUser">Email of User</label>
@@ -63,7 +61,7 @@
         [(ngModel)]="newCourse.ourUsersId"
         class="form-control"
       >
-        <option  [value]="user.id">
+        <option [value]="user.id">
           {{ user.email }}
         </option>
       </select>
@@ -85,30 +83,9 @@
 </div>
 
 <!-- List of Courses -->
-<!-- <div *ngIf="courses.length" class="card mt-4">
-  <div class="card-header">
-    <h3>Existing Courses</h3>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li *ngFor="let course of courses" class="list-group-item">
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <h5>{{ course.name }}</h5>
-          <p>{{ course.description }}</p>
-        </div>
-        <div>
-          <button class="btn btn-primary" (click)="editCourse(course)">Edit</button>
-          <button class="btn btn-danger ms-2" (click)="deleteCourse(course.id!)">Delete</button>
-        </div>
-      </div>
-    </li>
-  </ul>
-</div> -->
-<!-- Liste des cours -->
- <!-- List of Courses -->
- <div *ngIf="courses.length" class="card mt-4 shadow-sm">
-  <div class="card-header bg-Light text-white">
-    <h3 class="mb-0">List of Courses</h3>
+<div *ngIf="courses.length" class="card mt-4 shadow-sm">
+  <div class="card-header bg-light text-dark">
+    <h3 class="mb-0">Liste des Cours</h3>
   </div>
   <ul class="list-group list-group-flush">
     <li *ngFor="let course of courses" class="list-group-item">
@@ -117,18 +94,25 @@
           <h5 class="mb-1">{{ course.name }}</h5>
           <p class="mb-0">{{ course.description }}</p>
 
+          <!-- Display the image associated with the course -->
+          <img *ngIf="getImageUrl(course.imageId)" 
+               [src]="getImageUrl(course.imageId)" 
+               alt="Image du Cours" 
+               class="img-thumbnail" 
+               style="width: 150px; height: 100px;">
         </div>
         <div>
           <button class="btn btn-outline-primary" (click)="editCourse(course)">
-            Edit
+            Éditer
           </button>
           <button class="btn btn-outline-danger ms-2" (click)="deleteCourse(course.id!)">
-            Delete
+            Supprimer
           </button>
         </div>
       </div>
     </li>
   </ul>
 </div>
-
-
+<ng-template #noImages>
+  <p>Aucune image téléchargée pour le moment.</p>
+</ng-template>

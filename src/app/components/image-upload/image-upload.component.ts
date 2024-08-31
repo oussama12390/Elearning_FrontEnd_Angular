@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Image } from '../model/image.model'; // Assurez-vous d'avoir un modèle Image
 
 @Component({
   selector: 'app-image-upload',
@@ -10,7 +9,7 @@ import { Image } from '../model/image.model'; // Assurez-vous d'avoir un modèle
 export class ImageUploadComponent implements OnInit {
   selectedFile: File | null = null;
   uploadResponse: string | null = null;
-  imageList: string[] = [];
+  imageList: { id: number; url: string }[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -34,7 +33,7 @@ export class ImageUploadComponent implements OnInit {
         .subscribe({
           next: (response) => {
             this.uploadResponse = response;
-            this.loadImages(); // Recharger la liste des images après l'upload
+            this.loadImages(); // Reload the list of images after uploading
           },
           error: (error) => this.uploadResponse = `Upload failed: ${error.message}`
         });
@@ -42,21 +41,19 @@ export class ImageUploadComponent implements OnInit {
   }
 
   loadImages(): void {
-    this.http.get<Image[]>('http://localhost:8080/auth/api/images')
+    this.http.get<{ id: number; name: string; type: string; data: string }[]>('http://localhost:8080/auth/api/images')
       .subscribe({
-        next: (response) => this.imageList = response.map(img => this.convertToImageUrl(img.data, img.type)),
+        next: (response) => {
+          this.imageList = response.map(img => ({
+            id: img.id,
+            url: `data:${img.type};base64,${img.data}`
+          }));
+        },
         error: (error) => console.error('Failed to load images:', error)
       });
   }
 
-  convertToImageUrl(data: string, type: string): string {
-    return `data:${type};base64,${data}`;
+  getImageUrl(imageId: number): string {
+    return `http://localhost:8080/auth/api/images/${imageId}`;
   }
 }
-
-// interface Image {
-//   id: number;
-//   name: string;
-//   type: string;
-//   data: string;  // data sous forme base64 string
-// }
