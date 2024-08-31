@@ -101,7 +101,7 @@ export class CoursesComponent implements OnInit {
 
   saveCourse(): void {
     if (this.selectedCourse) {
-      this.courseService.updateCourse(this.selectedCourse.id!, this.newCourse).subscribe({
+      this.courseService.updateCourse(this.selectedCourse.name!, this.newCourse).subscribe({
         next: () => {
           this.getAllCourses();
           this.selectedCourse = null;
@@ -121,19 +121,22 @@ export class CoursesComponent implements OnInit {
   }
 
   editCourse(course: Course): void {
-    this.selectedCourse = { ...course };
-    this.newCourse = { ...course };
+    // Correction : Assurez-vous que l'ID est bien transmis
+    this.selectedCourse = { ...course };  // Cloner l'objet course
+    this.newCourse = { ...course };  // Cloner l'objet course pour éditer
   }
 
-  deleteCourse(id: number): void {
-    this.courseService.deleteCourse(id).subscribe({
+  deleteCourse(name: string): void {
+    this.courseService.deleteCourse(name).subscribe({
       next: () => {
-        this.courses = this.courses.filter(course => course.id !== id);
-        this.resetForm();
+        // Remove the course with the matching name from the list
+        this.courses = this.courses.filter(course => course.name !== name);
+        this.resetForm(); // Reset the form after deletion
       },
-      error: (error) => console.error('Erreur lors de la suppression du cours:', error)
+      error: (error) => console.error('Erreur lors de la suppression du cours:', error) // Log any errors that occur
     });
   }
+  
 
   cancelEdit(): void {
     this.selectedCourse = null;
@@ -144,6 +147,7 @@ export class CoursesComponent implements OnInit {
     this.newCourse = { name: '', description: '', categoryId: null, ourUsersId: null, imageId: null };
     this.setLoggedInUser();
   }
+
   getImageUrl(imageId: number | null | undefined): string | null {
     if (imageId == null) {  // This checks for both null and undefined
       return null;
@@ -151,6 +155,4 @@ export class CoursesComponent implements OnInit {
     const image = this.images.find(img => img.id === imageId);
     return image ? `data:${image.type};base64,${image.data}` : null;
   }
-  
-  
 }
