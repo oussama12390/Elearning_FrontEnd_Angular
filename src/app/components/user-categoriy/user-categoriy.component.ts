@@ -19,10 +19,9 @@ import { Category } from '../../components/model/category.model';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-user-categoriy',
-   templateUrl: './user-categoriy.component.html',
-  styleUrl: './user-categoriy.component.css'
-  
+   selector: 'app-user-categoriy',
+  templateUrl: './user-categoriy.component.html',
+    styleUrl: './user-categoriy.component.css'
 })
 export class UserCategoriyComponent implements OnInit {
   categories: Category[] = [];
@@ -53,10 +52,22 @@ export class UserCategoriyComponent implements OnInit {
 
 
 
+
+
   
   
 
  
 }
+
+
+
+
+
+  
+  
+
+ 
+
 
 

@@ -25,7 +25,7 @@ export class CourseService {
   getAllCoursesUser(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseUrl}/user/all/courses`, { headers: this.getHeaders() });
   }
-
+//part of user
 
   getCourseById(id: number): Observable<Course> {
     return this.http.get<Course>(`${this.baseUrl}/admin/get/course/${id}`, { headers: this.getHeaders() });

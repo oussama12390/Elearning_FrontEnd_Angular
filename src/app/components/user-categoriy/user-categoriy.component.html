@@ -1,11 +1,11 @@
 <app-page-user></app-page-user>
-
-<div class="container mt-3">
-    <h3>List of Categories</h3>
-    <ul class="list-group">
-      <li *ngFor="let category of categories" class="list-group-item d-flex justify-content-between align-items-center">
-        {{ category.name }}
-       
-      </li>
-    </ul>
+<h3 class="mb text-primary">List of Categories</h3>
+<div class="card" style="width: 180rem;">
+  <div *ngFor="let category of categories" class="col-md">
+      <div class="card-body" style="margin: 10px;" >
+        <h5 class="card-title font-weight-bold text-center">{{ category.name }}</h5>
+    </div>
   </div>
+</div>
+
+
