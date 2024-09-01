@@ -38,7 +38,7 @@ const routes: Routes = [
   {path:'courses',component:CoursesComponent},
   {path:'categories',component:CategoryManagementComponent},
   {path:'meet',component:MeetComponent},
-
+  {path:'upload-image',component:ImageUploadComponent},
 
 
   {path:'user-chat',component:UserChatComponent},
