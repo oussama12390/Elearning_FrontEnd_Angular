@@ -1,3 +1,4 @@
+<app-page-admin></app-page-admin>
 <div class="container mt-3">
   <h2>Category Management</h2>
 
@@ -37,8 +38,8 @@
         <img [src]="getImageUrl(category.imageId)" alt="Category Image" class="img-thumbnail" style="width: 100px; height: 100px;" />
       </div>
       <div>
-        <!-- <button class="btn btn-info btn-sm" (click)="editCategory(category)">Edit</button>
-        <button class="btn btn-danger btn-sm" (click)="deleteCategory(category.name)">Delete</button> -->
+        <button class="btn btn-info btn-sm" (click)="editCategory(category)">Edit</button>
+        <!-- <button class="btn btn-danger btn-sm" (click)="deleteCategory(category.name)">Delete</button>  -->
       </div>
     </li>
   </ul>
