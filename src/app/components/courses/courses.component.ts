@@ -20,6 +20,7 @@ export class CoursesComponent implements OnInit {
   selectedCourse: Course | null = null;
   newCourse: Course = { name: '', description: '', categoryId: null, ourUsersId: null, imageId: null }; 
   users: any[] = [];
+  name:any;
 
   constructor(
     private courseService: CourseService, 
@@ -155,4 +156,39 @@ export class CoursesComponent implements OnInit {
     const image = this.images.find(img => img.id === imageId);
     return image ? `data:${image.type};base64,${image.data}` : null;
   }
+
+  // searchImageOnGoogle(imageId: number | null | undefined): void {
+  //   if (imageId == null) { // Vérifie que l'image existe
+  //     return;
+  //   }
+  
+  //   const image = this.categories.find(img => img.id === imageId);
+  //   if (image && image.name) {
+  //     const query = encodeURIComponent(image.name); // Encode le nom de l'image pour l'URL
+  //     const googleNewsUrl = `https://www.google.com/search?q=${query}&tbm=bks`; // Recherche dans Google News
+  //     window.open(googleNewsUrl, '_blank'); // Ouvre un nouvel onglet avec la recherche Google News
+  //   }
+  // }
+  searchImageOnAmazon(imageId: number | null | undefined, courseName: string, categoryName: string): void {
+    if (imageId == null) {
+      return;
+    }
+  
+    const image = this.images.find(img => img.id === imageId);
+    if (image && courseName && categoryName) {
+      const query = encodeURIComponent(`${courseName} ${categoryName}`);
+      const amazonBooksUrl = `https://www.amazon.com/s?k=${query}&i=stripbooks`;
+      window.open(amazonBooksUrl, '_blank');
+    }
+  }
+  
+  getCategoryName(categoryId: number | null | undefined): string {
+    const category = this.categories.find(cat => cat.id === categoryId);
+    return category ? category.name : '';
+  }
+  
+  
+  
+  
+  
 }

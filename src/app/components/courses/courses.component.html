@@ -91,11 +91,20 @@
           <div class="d-flex align-items-center justify-content-between">
             <!-- Colonne pour l'image et le texte du cours -->
             <div class="col-md-8 d-flex align-items-center">
-              <img *ngIf="getImageUrl(course.imageId)"
+              <!-- <img *ngIf="getImageUrl(course.imageId)"
                    [src]="getImageUrl(course.imageId)"
                    alt="Image du Cours"
                    class="img-thumbnail me-4"
-                   style="width: 150px; height: 150px; object-fit: cover;">
+                   style="width: 150px; height: 150px; object-fit: cover;"
+                   (click)="searchImageOnGoogle(course.imageId)"> -->
+                   <img *ngIf="getImageUrl(course.imageId)"
+                   [src]="getImageUrl(course.imageId)"
+                   alt="Image du Cours"
+                   class="img-thumbnail me-4"
+                   style="width: 150px; height: 150px; object-fit: cover;"
+                   (click)="searchImageOnAmazon(course.imageId, course.name, getCategoryName(course.categoryId))">
+              
+
               <div>
                 <h5 class="mb-2">{{ course.name }}</h5>
                 <p class="mb-2 text-muted">{{ course.description }}</p>
