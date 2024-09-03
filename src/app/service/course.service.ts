@@ -32,6 +32,7 @@ export class CourseService {
   }
 
   createCourse(course: Course): Observable<Course> {
+    console.log("courese",course)
     return this.http.post<Course>(`${this.baseUrl}/admin/save`, course, { headers: this.getHeaders() });
   }
 

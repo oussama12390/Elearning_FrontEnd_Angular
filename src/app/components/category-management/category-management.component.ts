@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class CategoryManagementComponent implements OnInit {
   categories: Category[] = [];
   images: Image[] = [];
-  currentCategory: Category = { name: '', imageId: null };
+  currentCategory: Category = { name: ''};
   selectedCategory: Category | null = null;
   isEditMode: boolean = false;
   user: any;
@@ -87,22 +87,22 @@ export class CategoryManagementComponent implements OnInit {
     }
   }
 
-  // deleteCategory(name: string): void {
-  //   if (confirm('Are you sure you want to delete this category?')) {
-  //     this.categoryService.deleteCategory(name).subscribe({
-  //       next: () => {
-  //         this.getAllCategories();
-  //       },
-  //       error: (error: HttpErrorResponse) => {
-  //         if (error.status === 403) {
-  //           alert('You are not authorized to delete this category.');
-  //         } else {
-  //           alert('An error occurred while deleting the category.');
-  //         }
-  //       }
-  //     });
-  //   }
-  // }
+  deleteCategory(name: string): void {
+    if (confirm('Are you sure you want to delete this category?')) {
+      this.categoryService.deleteCategory(name).subscribe({
+        next: () => {
+          this.getAllCategories();
+        },
+        error: (error: HttpErrorResponse) => {
+          if (error.status === 403) {
+            alert('You are not authorized to delete this category.');
+          } else {
+            alert('An error occurred while deleting the category.');
+          }
+        }
+      });
+    }
+  }
 
   editCategory(category: Category): void {
     this.selectedCategory = { ...category };
