@@ -87,9 +87,9 @@ export class CategoryManagementComponent implements OnInit {
     }
   }
 
-  deleteCategory(name: string): void {
+  deleteCategory(id: number): void {
     if (confirm('Are you sure you want to delete this category?')) {
-      this.categoryService.deleteCategory(name).subscribe({
+      this.categoryService.deleteCategory(id).subscribe({
         next: () => {
           this.getAllCategories();
         },
@@ -119,7 +119,7 @@ export class CategoryManagementComponent implements OnInit {
   }
 
   resetForm(): void {
-    this.currentCategory = { name: '', imageId: null };
+    this.currentCategory = { name: '' };
     this.selectedCategory = null;
     this.isEditMode = false;
   }
