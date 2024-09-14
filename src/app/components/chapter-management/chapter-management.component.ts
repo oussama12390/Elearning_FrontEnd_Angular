@@ -138,8 +138,9 @@ export class ChapterManagementComponent implements OnInit {
   // Supprimer un chapitre
   deleteChapter(id: number): void {
     this.chapterService.deleteChapter(id).subscribe(() => {
+      this.loadChapters();
       alert('Chapitre supprimé avec succès');
-      this.loadChapters();  // Recharger les chapitres après suppression
+       // Recharger les chapitres après suppression
     });
   }
 
