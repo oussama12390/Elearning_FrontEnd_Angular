@@ -1,58 +1,96 @@
 <app-page-admin></app-page-admin>
-<!-- src/app/chapter-manager/chapter-manager.component.html -->
 
-<div class="container">
-  <h2>Gestion des Chapitres</h2>
 
-  <!-- Formulaire pour ajouter ou mettre à jour un chapitre -->
-  <form (ngSubmit)="saveChapter()">
-    <div class="form-group">
-      <label for="title">Titre du chapitre :</label>
-      <input type="text" id="title" class="form-control" [(ngModel)]="chapter.title" name="title" required />
-    </div>
+ 
+   
+      <h2 class="mb-4 text-center">Gestion des Chapitres</h2>
 
-    <div class="form-group">
-      <label for="content">Contenu :</label>
-      <textarea id="content" class="form-control" [(ngModel)]="chapter.content" name="content" required></textarea>
-    </div>
+      <!-- Form for adding or updating a chapter -->
+      <form (ngSubmit)="saveChapter()" class="shadow-sm rounded bg-light" style="padding-left: 200px">
+      
+            <label for="title" class="form-label">Titre du chapitre :</label>
+            <input 
+              type="text" 
+              id="title" 
+              class="form-control form-control-lg" 
+              [(ngModel)]="chapter.title" 
+              name="title" 
+              placeholder="Entrez le titre" 
+              required 
+            />
+       
+      
 
-    <div class="form-group">
-      <label for="courseId">ID du cours :</label>
-      <input type="number" id="courseId" class="form-control" [(ngModel)]="chapter.courseId" name="courseId" required />
-    </div>
+        
+            <label for="content" class="form-label">Contenu :</label>
+            <textarea 
+              id="content" 
+              class="form-control form-control-lg" 
+              [(ngModel)]="chapter.content" 
+              name="content" 
+              rows="6" 
+              placeholder="Entrez le contenu" 
+              required
+            ></textarea>
+          
+ 
 
-    <button type="submit" class="btn btn-primary">
-      {{ chapter.id ? 'Mettre à jour' : 'Ajouter' }}
-    </button>
+      
+          
+            <label for="courseId" class="form-label">ID du cours :</label>
+            <input 
+              type="number" 
+              id="courseId" 
+              class="form-control form-control-lg" 
+              [(ngModel)]="chapter.courseId" 
+              name="courseId" 
+              placeholder="Entrez l'ID du cours" 
+              required 
+            />
+         
+     
 
-    <button type="button" class="btn btn-secondary" (click)="resetForm()">Réinitialiser</button>
-  </form>
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary btn-lg">
+            {{ chapter.id ? 'Mettre à jour' : 'Ajouter' }}
+          </button>
+          <button type="button" class="btn btn-secondary btn-lg" (click)="resetForm()">Réinitialiser</button>
+        </div>
+      </form>
 
-  <hr />
-
-  <!-- Liste des chapitres existants -->
-  <h3>Liste des chapitres</h3>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Titre</th>
-        <th>Contenu</th>
-        <th>ID du cours</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let chapter of chapters">
-        <td>{{ chapter.id }}</td>
-        <td>{{ chapter.title }}</td>
-        <td>{{ chapter.content }}</td>
-        <td>{{ chapter.courseId }}</td>
-        <td>
-          <button class="btn btn-info" (click)="selectChapterForUpdate(chapter)">Modifier</button>
-          <button class="btn btn-danger" (click)="deleteChapter(chapter.id!)">Supprimer</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+      <hr class="my-4" />
+      <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered align-middle">
+          <thead class="table-wiht text-center">
+            <tr>
+              <th>ID</th>
+              <th>Titre</th>
+              <th>Contenu</th>
+              <th>ID du cours</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let chapter of chapters">
+              <td>{{ chapter.id }}</td>
+              <td>{{ chapter.title }}</td>
+              <td class="text-truncate" style="max-width: 150px;">{{ chapter.content }}</td>
+              <td>{{ chapter.courseId }}</td>
+              <td class="text-center">
+                <div class="btn-group" role="group">
+                  <button class="btn btn-info btn-sm" (click)="selectChapterForUpdate(chapter)">
+                    <i class="bi bi-pencil-square"></i> Modifier
+                  </button>
+                  <button class="btn btn-danger btn-sm" (click)="deleteChapter(chapter.id!)">
+                    <i class="bi bi-trash"></i> Supprimer
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+     
+    
+ 
