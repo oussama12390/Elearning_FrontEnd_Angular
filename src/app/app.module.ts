@@ -24,7 +24,8 @@ import { UserCoursesComponent } from './components/user-courses/user-courses.com
 import { UserChatComponent } from './components/user-chat/user-chat.component';
 import { UserCategoriyComponent } from './components/user-categoriy/user-categoriy.component';
 import { UserMeetComponent } from './components/user-meet/user-meet.component';
-import { ImageUploadComponent } from './components/image-upload/image-upload.component';  // Import CommonModule
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
+import { ChapterManagementComponent } from './components/chapter-management/chapter-management.component';  // Import CommonModule
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
     UserChatComponent,
     UserCategoriyComponent,
     UserMeetComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    ChapterManagementComponent
     
   ],
   imports: [

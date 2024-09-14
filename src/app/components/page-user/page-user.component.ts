@@ -22,6 +22,7 @@ export class PageUserComponent implements OnInit {
       this.userService.getCurrentUser().subscribe(
         (data) => {
           this.user = data;
+          console.log(data);
         },
         (error) => {
           console.error('Error fetching user details:', error);

@@ -18,6 +18,7 @@ import { UserCoursesComponent } from './components/user-courses/user-courses.com
 import { UserCategoriyComponent } from './components/user-categoriy/user-categoriy.component';
 import { UserMeetComponent } from './components/user-meet/user-meet.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
+import { ChapterManagementComponent } from './components/chapter-management/chapter-management.component';
 
 const routes: Routes = [
   /*{ path: 'register', component: RegisterComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path:'categories',component:CategoryManagementComponent},
   {path:'meet',component:MeetComponent},
   {path:'upload-image',component:ImageUploadComponent},
+  {path:'chapter-magment',component:ChapterManagementComponent},
 
 
   {path:'user-chat',component:UserChatComponent},

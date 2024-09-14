@@ -1,0 +1,58 @@
+<app-page-admin></app-page-admin>
+<!-- src/app/chapter-manager/chapter-manager.component.html -->
+
+<div class="container">
+  <h2>Gestion des Chapitres</h2>
+
+  <!-- Formulaire pour ajouter ou mettre à jour un chapitre -->
+  <form (ngSubmit)="saveChapter()">
+    <div class="form-group">
+      <label for="title">Titre du chapitre :</label>
+      <input type="text" id="title" class="form-control" [(ngModel)]="chapter.title" name="title" required />
+    </div>
+
+    <div class="form-group">
+      <label for="content">Contenu :</label>
+      <textarea id="content" class="form-control" [(ngModel)]="chapter.content" name="content" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="courseId">ID du cours :</label>
+      <input type="number" id="courseId" class="form-control" [(ngModel)]="chapter.courseId" name="courseId" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      {{ chapter.id ? 'Mettre à jour' : 'Ajouter' }}
+    </button>
+
+    <button type="button" class="btn btn-secondary" (click)="resetForm()">Réinitialiser</button>
+  </form>
+
+  <hr />
+
+  <!-- Liste des chapitres existants -->
+  <h3>Liste des chapitres</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Contenu</th>
+        <th>ID du cours</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let chapter of chapters">
+        <td>{{ chapter.id }}</td>
+        <td>{{ chapter.title }}</td>
+        <td>{{ chapter.content }}</td>
+        <td>{{ chapter.courseId }}</td>
+        <td>
+          <button class="btn btn-info" (click)="selectChapterForUpdate(chapter)">Modifier</button>
+          <button class="btn btn-danger" (click)="deleteChapter(chapter.id!)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
