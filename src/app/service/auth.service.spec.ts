@@ -14,5 +14,7 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   });
 });
+
+export { AuthService };
  // Méthode pour vérifier la connexion de l'utilisateur
 

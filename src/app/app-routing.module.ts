@@ -19,6 +19,7 @@ import { UserCategoriyComponent } from './components/user-categoriy/user-categor
 import { UserMeetComponent } from './components/user-meet/user-meet.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { ChapterManagementComponent } from './components/chapter-management/chapter-management.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   /*{ path: 'register', component: RegisterComponent },
@@ -41,7 +42,7 @@ const routes: Routes = [
   {path:'meet',component:MeetComponent},
   {path:'upload-image',component:ImageUploadComponent},
   {path:'chapter-magment',component:ChapterManagementComponent},
-
+  {path:'profile',component:ProfileComponent},
 
   {path:'user-chat',component:UserChatComponent},
   {path:'user-courses',component:UserCoursesComponent},

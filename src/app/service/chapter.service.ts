@@ -31,8 +31,8 @@ export class ChapterService {
     return this.http.get<Chapter>(`${this.baseUrl}/get/chaptersById/${id}`,{ headers: this.getHeaders() });
   }
 
-  updateChapter(name: string, chapter: Chapter): Observable<Chapter> {
-    return this.http.put<Chapter>(`${this.baseUrl}/update/chapterByName/${name}`, chapter,{ headers: this.getHeaders() });
+  updateChapter(title: string, chapter: Chapter): Observable<Chapter> {
+    return this.http.put<Chapter>(`${this.baseUrl}/update/chapterByTitle/${title}`, chapter,{ headers: this.getHeaders() });
   }
 
   deleteChapter(id: number): Observable<void> {
