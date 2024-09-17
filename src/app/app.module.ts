@@ -47,7 +47,8 @@ import { ChapterManagementComponent } from './components/chapter-management/chap
     UserCategoriyComponent,
     UserMeetComponent,
     ImageUploadComponent,
-    ChapterManagementComponent
+    ChapterManagementComponent,
+    HomeComponent,
     
   ],
   imports: [

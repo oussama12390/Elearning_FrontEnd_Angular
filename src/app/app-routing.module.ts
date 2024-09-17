@@ -34,7 +34,8 @@ const routes: Routes = [
   { path: 'admin', component: PageAdminComponent },
   { path: 'user', component: PageUserComponent },
   { path: 'login', component: LoginComponent },
-   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+
   //{ path: '**', redirectTo: '/login' }, // Redirect to home for undefined routes
   {path:'chat',component:ChatComponent},
   {path:'courses',component:CoursesComponent},

@@ -25,11 +25,11 @@ export class HomeComponent implements OnInit {
         },
         (error) => {
           console.error('Error fetching user details:', error);
-          this.router.navigateByUrl('/login'); // Redirect to login if there's an error
+         
         }
       );
     } else {
-      this.router.navigateByUrl('/login'); // Redirect to login if not authenticated
+      this.router.navigateByUrl('/home'); // Redirect to login if not authenticated
     }
   }
 }
