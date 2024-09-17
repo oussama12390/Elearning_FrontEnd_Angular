@@ -72,14 +72,14 @@
         
         <div class="d-flex align-items-center">
           <span class="nav-item">
-            <a class="nav-link" routerLink="/profile">Profile</a>
-          </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="me-3">
-            
-            <span class="text-primary">Wellcom:</span>
-            <span style="margin-left: 5px;"></span>
-            <span class="text-success">{{user.email}}</span>
-          </span>
+            <a class="nav-link" routerLink="/profile"><img *ngIf="user.image?.data" 
+              [src]="'data:image/' + user.image.type + ';base64,' + user.image.data" 
+              alt="Profile Image" 
+              class="img-fluid rounded-circle shadow-sm" 
+              style="max-width: 3000px; max-height: 60px;" /></a>
+            </span> &nbsp;
+            <span class="text-success">{{user.name}}</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           
           
           <form class="d-flex align-items-center">

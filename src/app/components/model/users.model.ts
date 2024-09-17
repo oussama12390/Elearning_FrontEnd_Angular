@@ -10,5 +10,6 @@ export interface Users {
     birth_date: string; // Date in string format
     imageId?: string; // Optional field for the image ID
     image:Image;
+    name:string;
   }
   
