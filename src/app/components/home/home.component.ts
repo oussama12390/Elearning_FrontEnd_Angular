@@ -10,7 +10,7 @@ import { AuthService } from '../../service/auth.service';
 export class HomeComponent implements OnInit {
   user: any;
 
-  constructor(private userService: UserService, private authService: AuthService, private router: Router) {}
+  constructor(private userService: UserService, public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     if (this.authService.isAuthenticated()) {
@@ -32,4 +32,6 @@ export class HomeComponent implements OnInit {
       this.router.navigateByUrl('/home'); // Redirect to login if not authenticated
     }
   }
+
+
 }

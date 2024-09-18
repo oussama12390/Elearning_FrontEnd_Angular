@@ -23,7 +23,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];
-  currentCategory: Category = { name: '' };
+  currentCategory: Category = { name: '' ,imageId:null};
   isEditMode: boolean = false;
 
   constructor(private categoryService: CategoryService) {}

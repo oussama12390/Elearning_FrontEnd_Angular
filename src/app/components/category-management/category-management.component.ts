@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class CategoryManagementComponent implements OnInit {
   categories: Category[] = [];
   images: Image[] = [];
-  currentCategory: Category = { name: ''};
+  currentCategory: Category = { name: '',imageId:null};
   selectedCategory: Category | null = null;
   isEditMode: boolean = false;
   user: any;
@@ -53,6 +53,7 @@ export class CategoryManagementComponent implements OnInit {
     this.categoryService.getAllCategories().subscribe({
       next: (data) => {
         this.categories = data;
+    
       },
       error: (error) => console.error('Error loading categories:', error)
     });
@@ -87,9 +88,9 @@ export class CategoryManagementComponent implements OnInit {
     }
   }
 
-  deleteCategory(id: number): void {
+  deleteCategory(name: string): void {
     if (confirm('Are you sure you want to delete this category?')) {
-      this.categoryService.deleteCategory(id).subscribe({
+      this.categoryService.deleteCategory(name).subscribe({
         next: () => {
           this.getAllCategories();
         },
@@ -119,7 +120,7 @@ export class CategoryManagementComponent implements OnInit {
   }
 
   resetForm(): void {
-    this.currentCategory = { name: '' };
+    this.currentCategory = { name: '' ,imageId:null};
     this.selectedCategory = null;
     this.isEditMode = false;
   }

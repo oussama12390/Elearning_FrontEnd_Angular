@@ -37,8 +37,18 @@
           class="list-group-item d-flex justify-content-between align-items-center"
         >
           <div>
+            <img *ngIf="getImageUrl(category.imageId)"
+            [src]="getImageUrl(category.imageId)"
+            alt="Image du Cours"
+            class="img-thumbnail me-4"
+            style="width: 100px; height: 100px; object-fit: cover;"
+           >
             <h5 class="mb-0">{{ category.name }}</h5>
           </div>
+
+         
+            
+      
           <div>
             <button
               class="btn btn-sm btn-outline-info me-2"
@@ -48,7 +58,7 @@
             </button>
             <button
               class="btn btn-sm btn-outline-danger"
-              (click)="deleteCategory(category.id!)"
+              (click)="deleteCategory(category.name!)"
             >
               Delete
             </button>
