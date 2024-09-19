@@ -18,6 +18,28 @@
               required
               placeholder="Enter category name"
             />
+            <div class="form-group mb-3">
+              <label for="currentCategory">Image</label>
+              <!-- <select
+                id="currentCategory"
+                [(ngModel)]="currentCategory.imageId"
+                class="form-control"
+              >
+                <option *ngFor="let image of images" [value]="image.id">
+                  {{ image.name }}
+                </option>
+              </select> -->
+              <select
+             id="currentCategory"
+            [(ngModel)]="currentCategory.imageId"
+           name="imageId"
+           class="form-control"
+>
+  <option *ngFor="let image of images" [value]="image.id">
+    {{ image.name }}
+  </option>
+</select>
+            </div>
           </div>
 
           <button type="submit" class="btn btn-success mt-3 w-100">
