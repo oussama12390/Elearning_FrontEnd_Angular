@@ -1,0 +1,129 @@
+<app-page-admin></app-page-admin>
+<!-- Formulaire de Gestion des Cours -->
+<div class="card mb-4 centered-card">
+  <!-- <div class="card-header">
+    <h3>Management of Courses</h3>
+  </div> -->
+  <div class="card-body">
+    <!-- Formulaire pour Ajouter / Mettre à Jour un Cours -->
+    <div class="form-group mb-3">
+      <label for="newCourseName">Name</label>
+      <input
+        id="newCourseName"
+        [(ngModel)]="newCourse.name"
+        placeholder="Name"
+        class="form-control"
+        type="text"
+      />
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="newCourseDescription">Description</label>
+      <input
+        id="newCourseDescription"
+        [(ngModel)]="newCourse.description"
+        placeholder="Description"
+        class="form-control"
+        type="text"
+      />
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="newCourseCategory">Category</label>
+      <select
+        id="newCourseCategory"
+        [(ngModel)]="newCourse.categoryId"
+        class="form-control"
+      >
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="newCourseImage">Image</label>
+      <select
+        id="newCourseImage"
+        [(ngModel)]="newCourse.imageId"
+        class="form-control"
+      >
+        <option *ngFor="let image of images" [value]="image.id">
+          {{ image.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="newCourseUser">Email of User</label>
+      <select
+        id="newCourseUser"
+        [(ngModel)]="newCourse.ourUsersId"
+        class="form-control"
+      >
+        <option [value]="user.id">
+          {{ user.email }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Boutons d'Action -->
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-primary" (click)="saveCourse()">Add Course</button>
+      <button class="btn btn-secondary" (click)="resetForm()" *ngIf="selectedCourse">Cancel</button>
+    </div>
+
+    <!-- Boutons pour Mettre à Jour et Supprimer -->
+    <div *ngIf="selectedCourse" class="d-flex justify-content-between mt-3">
+      <div>
+        <button class="btn btn-secondary" (click)="saveCourse()">Update Course</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Liste des Cours -->
+<div class="container mt-4" style="margin-right: 1000px;" >
+  <div class="d-flex justify-content-center">
+    <div class="card shadow-lg" style="width: 100%; max-width: 10000px;">
+      <ul class="list-group list-group-flush">
+        <li *ngFor="let course of courses" class="list-group-item">
+          <div class="d-flex align-items-center justify-content-between">
+            <!-- Colonne pour l'image et le texte du cours -->
+            <div class="col-md-8 d-flex align-items-center">
+              <!-- <img *ngIf="getImageUrl(course.imageId)"
+                   [src]="getImageUrl(course.imageId)"
+                   alt="Image du Cours"
+                   class="img-thumbnail me-4"
+                   style="width: 150px; height: 150px; object-fit: cover;"
+                   (click)="searchImageOnGoogle(course.imageId)"> -->
+                   <img *ngIf="getImageUrl(course.imageId)"
+                   [src]="getImageUrl(course.imageId)"
+                   alt="Image du Cours"
+                   class="img-thumbnail me-4"
+                   style="width: 150px; height: 150px; object-fit: cover;"
+                   (click)="searchImageOnAmazon(course.imageId, course.name, getCategoryName(course.categoryId))">
+              
+
+              <div>
+                <h5 class="mb-2">{{ course.name }}</h5>
+                <p class="mb-2 text-muted">{{ course.description }}</p>
+              </div>
+            </div>
+
+            <!-- Colonne pour les boutons alignés à droite -->
+            <div class="col-md-4 text-end">
+              <button class="btn btn-outline-success btn-sm" (click)="editCourse(course)">
+                Update
+              </button>
+              <button class="btn btn-outline-danger btn-sm ms-2" (click)="deleteCourse(course.name!)">
+                Delete
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

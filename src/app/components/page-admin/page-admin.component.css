@@ -1,0 +1,49 @@
+/* Custom Navbar Styles */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-nav .nav-link {
+    margin-right: 15px;
+    font-weight: 500;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #0056b3; /* Color on hover */
+  }
+  
+  .navbar-nav .nav-link.active {
+    color: #007bff; /* Color for active link */
+    font-weight: bold;
+  }
+  
+  .navbar-toggler {
+    border-color: #007bff;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml,...'); /* Bootstrap default icon */
+  }
+  
+  /* Add margin to the router-outlet to keep content clear of navbar */
+  router-outlet {
+    margin-top: 1rem;
+  }
+  /* Style pour le bouton de déconnexion */
+.btn-logout {
+  background-color: red; /* Couleur de fond rouge */
+  color: lightgray; /* Couleur du texte gris clair */
+  border: none; /* Supprimer la bordure par défaut */
+  padding: 8px 16px; /* Ajouter un peu de padding pour l'espacement */
+  border-radius: 4px; /* Arrondir les coins du bouton */
+}
+
+.btn-logout:hover {
+  background-color: darkred; /* Couleur de fond plus sombre au survol */
+  color: white; /* Couleur du texte blanche au survol */
+}
+
+/* Style pour le nom de l'utilisateur */
+.navbar-nav .nav-link {
+  color: black; /* Couleur du texte */
+}

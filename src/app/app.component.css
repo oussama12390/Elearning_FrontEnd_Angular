@@ -1,0 +1,67 @@
+
+/* Style global pour la barre de navigation */
+nav {
+    background-color: #333;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  /* Style pour la liste des éléments de navigation */
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Style pour chaque élément de la liste */
+  nav ul li {
+    margin-left: 20px;
+  }
+  
+  /* Style pour les liens de navigation */
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  /* Style de survol et de lien actif */
+  nav ul li a:hover,
+  nav ul li a.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Changement de couleur pour les boutons "Login" et "Register" */
+  nav ul li a.router-link-active {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive design : navigation pour petits écrans */
+  @media (max-width: 600px) {
+    nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    nav ul li {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  
+    nav ul li a {
+      display: block;
+      width: 100%;
+    }
+  }
+  

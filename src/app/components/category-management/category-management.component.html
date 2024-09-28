@@ -1,0 +1,90 @@
+<app-page-admin></app-page-admin>
+
+<div class="d-flex justify-content-center align-items-center ">
+  <div class="container w-50">
+    <div class="d-flex flex-column justify-content-center align-items-center" style="margin-right:300px;">
+
+      <!-- Formulaire d'ajout ou de modification de catégorie -->
+      <div class="card shadow-sm mb-4 w-100">
+        <div class="card-header bg-primary text-white text-center">
+          <h5 class="mb-0">{{ isEditMode ? 'Update Category' : 'Add Category' }}</h5>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="saveCategory()">
+            <div class="form-group mb-3">
+              <label for="name">Category Name</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                [(ngModel)]="currentCategory.name"
+                name="name"
+                required
+                placeholder="Enter category name"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="currentCategory">Select Image</label>
+              <select
+                id="currentCategory"
+                [(ngModel)]="currentCategory.imageId"
+                name="imageId"
+                class="form-control"
+              
+              >
+                <option *ngFor="let image of images" [value]="image.id">
+                  {{ image.name }}
+                </option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-success mt-3 w-100">
+              {{ isEditMode ? 'Update Category' : 'Add Category' }}
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Liste des catégories -->
+      <div class="card shadow-sm w-100">
+        <div class="card-header bg-secondary text-white text-center">
+          <h4 class="mb-0">List of Categories</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li
+            *ngFor="let category of categories"
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <div class="d-flex align-items-center">
+              <img
+                *ngIf="getImageUrl(category.imageId)"
+                [src]="getImageUrl(category.imageId)"
+                alt="{{ category.name }} Image"
+                class="img-thumbnail me-3"
+                style="width: 100px; height: 100px; object-fit: cover;"
+              />
+              <h5 class="mb-0">{{ category.name }}</h5>
+            </div>
+
+            <div>
+              <button
+                class="btn btn-sm btn-outline-info me-2"
+                (click)="editCategory(category)"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn-sm btn-outline-danger"
+                (click)="deleteCategory(category.name)"
+              >
+                Delete
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>

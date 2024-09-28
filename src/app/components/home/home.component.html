@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Learning Platform</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">E-Learning</a>
+
+     <li *ngIf="!authService.isAuthenticated()" class="nav-item">
+          <a href="/login" class="btn btn-outline-primary btn-lg ml-2">Sign In</a>
+        </li>
+        <li  *ngIf="!authService.isAuthenticated()" class="nav-item" >
+          <a href="/register" class="btn btn-outline-warning btn-lg ml-2">Sign Up</a>
+        </li>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">All Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-warning nav-link text-dark" href="/login">Start Learning</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section d-flex align-items-center" style="background-color: #1aa8cc; min-height: 845px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <span class="badge badge-warning">On-Demand Course</span>
+          <h1 class="display-4 font-weight-bold text-white mt-3">Unlock Your Potential with Our Online Learning Platform</h1>
+          <p class="text-light">Join thousands of learners from around the world and access a wide range of courses designed to help you achieve your personal and professional goals. Start learning today and discover a world of knowledge at your fingertips.</p>
+          <!-- Existing Buttons -->
+        
+          <a href="/login" class="btn btn-light btn-lg">Start Course</a>
+          <a href="#" class="btn btn-link text-white btn-lg">View All Courses</a>
+          <!-- New Sign In and Sign Up Buttons -->
+         
+          
+        </div>
+        <!-- <div class="col-md-6">
+          <img src="course.jpeg" alt="Course Image" class="img-fluid rounded shadow">
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

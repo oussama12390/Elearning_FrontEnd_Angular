@@ -1,0 +1,67 @@
+/* Style global pour le formulaire */
+form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Style pour les champs de saisie */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #fff;
+  transition: border 0.3s ease-in-out;
+}
+
+/* Changement de bordure au focus */
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Style pour le bouton de soumission */
+button[type="submit"] {
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Changement de couleur au survol du bouton */
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive design: ajustement pour les petits écrans */
+@media (max-width: 500px) {
+  form {
+    padding: 15px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    font-size: 14px;
+  }
+
+  button[type="submit"] {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

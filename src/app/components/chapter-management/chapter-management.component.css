@@ -1,0 +1,147 @@
+/* Styles généraux pour la page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  /* Conteneur principal */
+  div {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* En-tête de gestion des chapitres */
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+  
+  /* Style des champs du formulaire */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+  }
+  
+  input[type="text"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  button[type="submit"],
+  button[type="button"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover,
+  button[type="button"]:hover {
+    background-color: #218838;
+  }
+  
+  button[type="button"] {
+    background-color: #dc3545;
+    margin-left: 10px;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #c82333;
+  }
+  
+  /* Liste des chapitres */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  li {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    margin-top: 0;
+    color: #007bff;
+  }
+  
+  p {
+    margin: 10px 0;
+    color: #555;
+  }
+  
+  /* Boutons d'action (modifier, supprimer) */
+  button {
+    padding: 8px 12px;
+    margin-right: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  button:nth-child(1) {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:nth-child(1):hover {
+    background-color: #0069d9;
+  }
+  
+  button:nth-child(2) {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:nth-child(2):hover {
+    background-color: #c82333;
+  }
+  
