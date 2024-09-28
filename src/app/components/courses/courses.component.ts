@@ -105,7 +105,6 @@ export class CoursesComponent implements OnInit {
       this.courseService.updateCourse(this.selectedCourse.name!, this.newCourse).subscribe({
         next: () => {
           this.getAllCourses();
-         
           this.selectedCourse = null;
           this.resetForm();
         },
